@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
 
 const App = () => (
-  <div className ='test'><h1>hello superstars</h1></div>
+  <div>
+    <h1>watch this marlen</h1>
+  </div>
 );
 
-
-render(<App />, document.getElementById('root'));
+export default App;
