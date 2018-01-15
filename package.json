@@ -7,6 +7,8 @@
     "nodemon": "^1.14.11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "styled-components": "^2.4.0",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.21.0"
@@ -33,7 +35,7 @@
   "scripts": {
     "lint": "eslint **/*.{js,jsx} --quiet",
     "build": "webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --hot"
   },
   "repository": {
     "type": "git",
