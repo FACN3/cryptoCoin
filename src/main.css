@@ -1,0 +1,16 @@
+body {
+  background-color: #f0ebe1;
+  font-family: 'Quicksand', 'Trebuchet', 'Ariel';
+  margin: 0px;
+}
+
+button {
+  font-family: 'Questrial';
+  font-weight: bold;
+  font-size: 100%;
+  background-color: #f7b733;
+  border-radius: 100px;
+  border: none;
+  color: white;
+  padding: 15px 40px;
+}
