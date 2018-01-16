@@ -6,9 +6,7 @@ const Wrapper = styled.div`
   background-color: #2f9999;
   color: white;
 `;
-// const Body = styled.body`
-//   background-color: #2f9999;
-// `;
+
 const LandingNavbar = styled.div`
   h2 {
     float: left;
@@ -30,16 +28,7 @@ const LandingHeader = styled.div`
   padding-bottom: 10vh;
   font-family: 'Questrial';
   font-size: 150%;
-  button {
-    ${'' /* font-family: "Questrial";
-    font-weight: bold;
-    font-size: 100%;
-    background-color: #f7b733;
-    border-radius: 100px;
-    border: none;
-    color: white;
-    padding: 15px 40px; */};
-  }
+
   button:hover:not(.active) {
     cursor: pointer;
   }

@@ -32,8 +32,6 @@ const NavbarDesktopUser = styled.div`
   li a:hover:not(.active) {
     cursor: pointer;
   }
-  @media (max-width: 700px) {
-  }
 `;
 
 const NavbarDesktopLinks = styled.ul`
