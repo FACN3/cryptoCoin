@@ -85,30 +85,19 @@ const Navbar = props => (
         <NavbarDesktopLinks>
           <h2>CryptoCoin</h2>
           <li>
-            <Link to="/sell">
-              <a>SELL</a>
-            </Link>
+            <Link to="/sell">SELL</Link>
           </li>
           <li>
-            <Link to="/buy">
-              <a>BUY</a>
-            </Link>
+            <Link to="/buy">BUY</Link>
           </li>
           <li>
-            <Link to="/markets">
-              <a>MARKETS</a>
-            </Link>
+            <Link to="/markets">MARKETS</Link>
           </li>
           <li>
-            <Link to="/learn">
-              <a>LEARN</a>
-            </Link>
+            <Link to="/learn">LEARN</Link>
           </li>
         </NavbarDesktopLinks>
       </div>
-    </div>
-    <div className="Navbar-mobile-navbar">
-      <h3>thisis a mobile navbar</h3>
     </div>
   </div>
 );

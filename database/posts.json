@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Samir Doe",
+    "preferedPaymentMethod": "Bank Transfer",
+    "country": "Israel",
+    "city": "Umm El Fahem",
+    "coin": "Bitcoin",
+    "amount": "1",
+    "price": "10,000 Shekel",
+    "buyerSeller": "Buyer"
+  },
+  {
+    "name": "Jana Poe",
+    "preferedPaymentMethod": "Bank Transfer",
+    "country": "Israel",
+    "city": "Nazareth",
+    "coin": "Ripple",
+    "amount": "150",
+    "price": "8,000 Shekel",
+    "buyerSeller": "Seller"
+  },
+  {
+    "name": "Max Jackson",
+    "preferedPaymentMethod": "Bank Transfer",
+    "country": "Israel",
+    "city": "Tel Aviv",
+    "coin": "Ethereum",
+    "amount": "2",
+    "price": "7,000 Shekel",
+    "buyerSeller": "Seller"
+  }
+]
