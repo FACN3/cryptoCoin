@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import styled from 'styled-components';
 import LineChart from './LineChart';
 import ToolTip from './ToolTip';
 import InfoBox from './InfoBox';
@@ -53,14 +54,14 @@ class MarketData extends Component {
       },
       ETH: {
         '1H |':
-          'https://min-api.cryptocompare.com/data/histominute?fsym=ETC&tsym=USD&limit=60&aggregate=1',
+          'https://min-api.cryptocompare.com/data/histominute?fsym=ETH&tsym=USD&limit=60&aggregate=1',
         ' 1D |':
-          'https://min-api.cryptocompare.com/data/histohour?fsym=ETC&tsym=USD&limit=24&aggregate=1',
+          'https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=24&aggregate=1',
         ' 1W |':
-          'https://min-api.cryptocompare.com/data/histohour?fsym=ETC&tsym=USD&limit=168',
+          'https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=168',
         ' 1M |': null,
         ' 1Y':
-          'https://min-api.cryptocompare.com/data/histoday?fsym=ETC&tsym=USD&limit=365&aggregate=1'
+          'https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=365&aggregate=1'
       },
       LTC: {
         '1H |':
@@ -190,6 +191,9 @@ class MarketData extends Component {
   }
 
   render() {
+    const Wrapper = styled.h2`
+      color: #fc4a1a;
+    `;
     const { duration, coin } = this.state;
     const style = {
       'text-decoration': 'none',
@@ -203,7 +207,7 @@ class MarketData extends Component {
     return (
       <div className="container">
         <div className="row">
-          <h1>{`${this.coinCode[this.state.coin]} Price Chart`}</h1>
+          <Wrapper>{`${this.coinCode[this.state.coin]} Price Chart`}</Wrapper>
         </div>
         <div className="row">
           {durations.map(
@@ -263,10 +267,6 @@ class MarketData extends Component {
             <option value="Ethereum">Ethereum</option>
             <option value="Litecoin">Litecoin</option>
           </select>;
-          <div id="coindesk">
-            {' '}
-            Powered by <a href="http://www.coindesk.com/price/">CoinDesk</a>
-          </div>
         </div>
       </div>
     );

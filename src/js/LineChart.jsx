@@ -12,9 +12,7 @@ class LineChart extends Component {
   // GET X & Y || MAX & MIN
   getX() {
     const { data, duration, coin } = this.props;
-    if (!data[duration]) {
-      debugger;
-    }
+
     return {
       min: data[coin][duration][0].x,
       max: data[coin][duration][data[coin][duration].length - 1].x

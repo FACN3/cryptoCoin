@@ -14,46 +14,69 @@ class InfoBox extends Component {
     };
   }
   componentDidMount() {
-    const { duration, coin } = this.props;
-    this.getData = () => {
-      const { data } = this.props;
-      const url = {
-        BTC: 'https://api.coindesk.com/v1/bpi/currentprice.json',
-        ETH: 'https://api.coindesk.com/v1/bpi/currentprice.json',
-        LTC: 'https://api.coindesk.com/v1/bpi/currentprice.json'
-      };
-
-      fetch(url[this.props.coin])
-        .then(r => r.json())
-        .then(bitcoinData => {
-          const price = bitcoinData.bpi.USD.rate_float;
-          const change = price - data[coin][duration][0].y;
-          const changeP =
-            (price - data[coin][duration][0].y) /
-            data[coin][duration][0].y *
-            100;
-
-          this.setState({
-            currentPrice: bitcoinData.bpi.USD.rate_float,
-            monthChangeD: change.toLocaleString('us-EN', {
-              style: 'currency',
-              currency: 'USD'
-            }),
-            monthChangeP: `${changeP.toFixed(2)} + %`,
-            updatedAt: bitcoinData.time.updated
-          });
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    };
     this.getData();
-    this.refresh = setInterval(() => this.getData(), 90000);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('nextpropsis ', nextProps);
+    console.log('this.props.coin', this.props.coin);
+
+    return (
+      this.props.coin !== nextProps.coin ||
+      this.state.currentPrice !== nextState.currentPrice
+    );
+  }
+  componentWillUpdate() {
+    console.log('componentwillupdate running');
+    this.getData();
   }
   componentWillUnmount() {
     clearInterval(this.refresh);
   }
+  getData() {
+    const { data, coin, duration } = this.props;
+    const url = {
+      BTC: 'https://api.coindesk.com/v1/bpi/currentprice.json',
+      ETH: 'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD',
+      LTC: 'https://min-api.cryptocompare.com/data/price?fsym=LTC&tsyms=USD'
+    };
+
+    fetch(url[this.props.coin])
+      .then(r => r.json())
+      .then(bitcoinData => {
+        const price =
+          this.props.coin === 'BTC'
+            ? bitcoinData.bpi.USD.rate_float
+            : bitcoinData.USD;
+
+        console.log('bitcoinData is', bitcoinData);
+        console.log('price is', price);
+        console.log('coin', this.props.coin);
+        const change = price - data[coin][duration][0].y;
+        const changeP =
+          (price - data[coin][duration][0].y) / data[coin][duration][0].y * 100;
+
+        const updatedAt =
+          this.props.coin === 'BTC'
+            ? bitcoinData.time.updated
+            : moment.utc().format('MMM D, YYYY hh:mm:ss');
+        this.setState({
+          currentPrice: price,
+          monthChangeD: change.toLocaleString('us-EN', {
+            style: 'currency',
+            currency: 'USD'
+          }),
+          monthChangeP: `${changeP.toFixed(2)} %`,
+          updatedAt
+        });
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
   render() {
+    this.refresh = setInterval(() => this.getData(), 90000);
+
     let durationText = '';
     switch (this.props.duration) {
       case '1H |':
@@ -85,7 +108,7 @@ class InfoBox extends Component {
               })}
             </div>
             <div className="subtext">
-              `Updated ${moment(this.state.updatedAt).fromNow()}`
+              Updated {moment(this.state.updatedAt).fromNow()}
             </div>
           </div>
         ) : null}
@@ -109,8 +132,7 @@ class InfoBox extends Component {
 // DEFAULT PROPS
 InfoBox.propTypes = {
   duration: PropTypes.string.isRequired,
-  coin: PropTypes.string.isRequired,
-  data: PropTypes.shape
+  coin: PropTypes.string.isRequired
 };
 
 export default InfoBox;
