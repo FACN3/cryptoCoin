@@ -8,7 +8,7 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './src/js/ClientApp.jsx'
   ],
-  devtool: 'source-map',
+  devtool: 'cheap-eval-source-map',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
@@ -41,7 +41,14 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react', 'stage-2']
+        }
+      },
+      {
+        test: /(\.css$)/,
+        loaders: ['style-loader', 'css-loader']
       }
     ]
   }
