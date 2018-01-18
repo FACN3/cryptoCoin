@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
+// import MarketData from './MarketData';
 
 const Wrapper = styled.div`
   background-color: #2f9999;
@@ -86,6 +88,7 @@ const Landing = () => (
         </Link>
       </LandingHeader>
       <LandingGraph className="landing-graph container-fluid">
+        <MarketData />
         <h2>Graph placeHolder</h2>
         <br />
         <select>

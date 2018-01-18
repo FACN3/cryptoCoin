@@ -6,7 +6,7 @@ module.exports = {
   entry: [
     './src/js/ClientApp.jsx'
   ],
-  devtool: 'inline-source-map',
+  devtool: 'cheap-eval-source-map',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
@@ -24,7 +24,13 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        query: {
+          presets: ['es2015', 'react', 'stage-2']
+        }
+      },
+      {
+        test: /(\.css$)/,
+        loaders: ['style-loader', 'css-loader', 'postcss-loader']
       }
     ]
   }
