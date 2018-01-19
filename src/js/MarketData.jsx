@@ -194,6 +194,7 @@ class MarketData extends Component {
     const Wrapper = styled.h2`
       color: #fc4a1a;
     `;
+
     const { duration, coin } = this.state;
     const style = {
       'text-decoration': 'none',

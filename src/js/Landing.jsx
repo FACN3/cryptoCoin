@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import styled from 'styled-components';
-<<<<<<< 729c844855ca2e93e42a5a60f4cc89b0d77521f6
-// import MarketData from './MarketData';
+import MarketData from './MarketData';
 =======
 import MarketData from './MarketData';
->>>>>>> adding graphing files to cryptocoin
+>>>>>>> fixed merged conflicts didnt work with atom. Trying again
 
 const Wrapper = styled.div`
   background-color: #2f9999;
@@ -93,16 +91,8 @@ const Landing = () => (
       </LandingHeader>
       <LandingGraph className="landing-graph container-fluid">
         <MarketData />
-<<<<<<< 729c844855ca2e93e42a5a60f4cc89b0d77521f6
-        <h2>Graph placeHolder</h2>
-        <br />
-        <select>
-          <option>Bitcoin</option>
-          <option>Ethereum</option>
-          <option>Litecoin</option>
-        </select>
 =======
->>>>>>> adding graphing files to cryptocoin
+>>>>>>> fixed merged conflicts didnt work with atom. Trying again
       </LandingGraph>
       <LandingSafety className="landing-safety">
         <h2>SAFELY MAKE YOUR FIRST TRADE</h2>

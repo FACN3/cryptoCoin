@@ -14,3 +14,14 @@ button {
   color: white;
   padding: 15px 40px;
 }
+
+select {
+  font-family: 'Questrial';
+  font-weight: bold;
+  font-size: 120%;
+  background-color: #f7b733;
+  border-radius: 100px;
+  border: none;
+  color: white;
+  padding: 15px 40px;
+}

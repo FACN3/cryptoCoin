@@ -32,6 +32,7 @@ class InfoBox extends Component {
   componentWillUnmount() {
     clearInterval(this.refresh);
   }
+
   getData() {
     const { data, coin, duration } = this.props;
     const url = {
