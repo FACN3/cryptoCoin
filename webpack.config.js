@@ -4,6 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   context: __dirname,
   entry: [
+    'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './src/js/ClientApp.jsx'
@@ -48,11 +49,7 @@ module.exports = {
       },
       {
         test: /(\.css$)/,
-<<<<<<< HEAD
         loaders: ['style-loader', 'css-loader']
-=======
-        loaders: ['style-loader', 'css-loader', 'postcss-loader']
->>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
       }
     ]
   }

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-<<<<<<< HEAD
 import styled from 'styled-components';
-=======
->>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
 import LineChart from './LineChart';
 import ToolTip from './ToolTip';
 import InfoBox from './InfoBox';
@@ -57,7 +54,6 @@ class MarketData extends Component {
       },
       ETH: {
         '1H |':
-<<<<<<< HEAD
           'https://min-api.cryptocompare.com/data/histominute?fsym=ETH&tsym=USD&limit=60&aggregate=1',
         ' 1D |':
           'https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=24&aggregate=1',
@@ -66,16 +62,6 @@ class MarketData extends Component {
         ' 1M |': null,
         ' 1Y':
           'https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=365&aggregate=1'
-=======
-          'https://min-api.cryptocompare.com/data/histominute?fsym=ETC&tsym=USD&limit=60&aggregate=1',
-        ' 1D |':
-          'https://min-api.cryptocompare.com/data/histohour?fsym=ETC&tsym=USD&limit=24&aggregate=1',
-        ' 1W |':
-          'https://min-api.cryptocompare.com/data/histohour?fsym=ETC&tsym=USD&limit=168',
-        ' 1M |': null,
-        ' 1Y':
-          'https://min-api.cryptocompare.com/data/histoday?fsym=ETC&tsym=USD&limit=365&aggregate=1'
->>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
       },
       LTC: {
         '1H |':
@@ -205,12 +191,10 @@ class MarketData extends Component {
   }
 
   render() {
-<<<<<<< HEAD
     const Wrapper = styled.h2`
       color: #fc4a1a;
     `;
-=======
->>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
+
     const { duration, coin } = this.state;
     const style = {
       'text-decoration': 'none',
@@ -224,11 +208,7 @@ class MarketData extends Component {
     return (
       <div className="container">
         <div className="row">
-<<<<<<< HEAD
           <Wrapper>{`${this.coinCode[this.state.coin]} Price Chart`}</Wrapper>
-=======
-          <h1>{`${this.coinCode[this.state.coin]} Price Chart`}</h1>
->>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
         </div>
         <div className="row">
           {durations.map(
@@ -288,13 +268,6 @@ class MarketData extends Component {
             <option value="Ethereum">Ethereum</option>
             <option value="Litecoin">Litecoin</option>
           </select>;
-<<<<<<< HEAD
-=======
-          <div id="coindesk">
-            {' '}
-            Powered by <a href="http://www.coindesk.com/price/">CoinDesk</a>
-          </div>
->>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
         </div>
       </div>
     );
