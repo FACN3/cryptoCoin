@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import MarketData from './MarketData';
-=======
-import MarketData from './MarketData';
->>>>>>> fixed merged conflicts didnt work with atom. Trying again
+
 
 const Wrapper = styled.div`
   background-color: #2f9999;
@@ -91,8 +89,7 @@ const Landing = () => (
       </LandingHeader>
       <LandingGraph className="landing-graph container-fluid">
         <MarketData />
-=======
->>>>>>> fixed merged conflicts didnt work with atom. Trying again
+
       </LandingGraph>
       <LandingSafety className="landing-safety">
         <h2>SAFELY MAKE YOUR FIRST TRADE</h2>

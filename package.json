@@ -39,6 +39,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-react": "^7.5.1",
+    "npm-check": "^5.5.2",
     "postcss-loader": "^2.0.10",
     "prettier": "^1.10.2",
     "react-addons-perf": "^15.4.2",
