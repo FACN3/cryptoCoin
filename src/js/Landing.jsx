@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
+<<<<<<< HEAD
 import MarketData from './MarketData';
+=======
+// import MarketData from './MarketData';
+>>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
 
 const Wrapper = styled.div`
   background-color: #2f9999;
@@ -89,6 +93,16 @@ const Landing = () => (
       </LandingHeader>
       <LandingGraph className="landing-graph container-fluid">
         <MarketData />
+<<<<<<< HEAD
+=======
+        <h2>Graph placeHolder</h2>
+        <br />
+        <select>
+          <option>Bitcoin</option>
+          <option>Ethereum</option>
+          <option>Litecoin</option>
+        </select>
+>>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
       </LandingGraph>
       <LandingSafety className="landing-safety">
         <h2>SAFELY MAKE YOUR FIRST TRADE</h2>

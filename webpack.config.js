@@ -48,7 +48,11 @@ module.exports = {
       },
       {
         test: /(\.css$)/,
+<<<<<<< HEAD
         loaders: ['style-loader', 'css-loader']
+=======
+        loaders: ['style-loader', 'css-loader', 'postcss-loader']
+>>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
       }
     ]
   }

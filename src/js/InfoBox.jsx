@@ -14,6 +14,7 @@ class InfoBox extends Component {
     };
   }
   componentDidMount() {
+<<<<<<< HEAD
     this.getData();
   }
   shouldComponentUpdate(nextProps, nextState) {
@@ -28,10 +29,48 @@ class InfoBox extends Component {
   componentWillUpdate() {
     console.log('componentwillupdate running');
     this.getData();
+=======
+    const { duration, coin } = this.props;
+    this.getData = () => {
+      const { data } = this.props;
+      const url = {
+        BTC: 'https://api.coindesk.com/v1/bpi/currentprice.json',
+        ETH: 'https://api.coindesk.com/v1/bpi/currentprice.json',
+        LTC: 'https://api.coindesk.com/v1/bpi/currentprice.json'
+      };
+
+      fetch(url[this.props.coin])
+        .then(r => r.json())
+        .then(bitcoinData => {
+          const price = bitcoinData.bpi.USD.rate_float;
+          const change = price - data[coin][duration][0].y;
+          const changeP =
+            (price - data[coin][duration][0].y) /
+            data[coin][duration][0].y *
+            100;
+
+          this.setState({
+            currentPrice: bitcoinData.bpi.USD.rate_float,
+            monthChangeD: change.toLocaleString('us-EN', {
+              style: 'currency',
+              currency: 'USD'
+            }),
+            monthChangeP: `${changeP.toFixed(2)} + %`,
+            updatedAt: bitcoinData.time.updated
+          });
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    };
+    this.getData();
+    this.refresh = setInterval(() => this.getData(), 90000);
+>>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
   }
   componentWillUnmount() {
     clearInterval(this.refresh);
   }
+<<<<<<< HEAD
   getData() {
     const { data, coin, duration } = this.props;
     const url = {
@@ -77,6 +116,9 @@ class InfoBox extends Component {
   render() {
     this.refresh = setInterval(() => this.getData(), 90000);
 
+=======
+  render() {
+>>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
     let durationText = '';
     switch (this.props.duration) {
       case '1H |':
@@ -108,7 +150,11 @@ class InfoBox extends Component {
               })}
             </div>
             <div className="subtext">
+<<<<<<< HEAD
               Updated {moment(this.state.updatedAt).fromNow()}
+=======
+              `Updated ${moment(this.state.updatedAt).fromNow()}`
+>>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
             </div>
           </div>
         ) : null}
@@ -132,7 +178,12 @@ class InfoBox extends Component {
 // DEFAULT PROPS
 InfoBox.propTypes = {
   duration: PropTypes.string.isRequired,
+<<<<<<< HEAD
   coin: PropTypes.string.isRequired
+=======
+  coin: PropTypes.string.isRequired,
+  data: PropTypes.shape
+>>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
 };
 
 export default InfoBox;
