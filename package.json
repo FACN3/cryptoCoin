@@ -44,11 +44,7 @@
   "scripts": {
     "lint": "eslint **/*.{js,jsx} --quiet",
     "build": "webpack",
-<<<<<<< HEAD
     "dev": "webpack-dev-server"
-=======
-    "dev": "webpack-dev-server --hot"
->>>>>>> 23ba3a84cd508ef4ec209f729e5a1b4302ae0588
   },
   "repository": {
     "type": "git",
