@@ -4,11 +4,12 @@ const webpack = require('webpack');
 module.exports = {
   context: __dirname,
   entry: [
+    'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './src/js/ClientApp.jsx'
   ],
-  devtool: 'source-map',
+  devtool: 'cheap-eval-source-map',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
@@ -41,7 +42,14 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react', 'stage-2']
+        }
+      },
+      {
+        test: /(\.css$)/,
+        loaders: ['style-loader', 'css-loader']
       }
     ]
   }
