@@ -2,6 +2,7 @@ node_modules/
 public/bundle.js
 public/*bundle*
 
+
 # Logs
 logs
 *.log
@@ -59,4 +60,4 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+*.env

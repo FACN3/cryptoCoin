@@ -4,7 +4,13 @@
   "description": "A cryptocurrency resource website",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "env2": "^2.2.0",
+    "eslint-loader": "^1.9.0",
+    "express": "^4.16.2",
     "nodemon": "^1.14.11",
+    "pg": "^7.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
@@ -35,10 +41,12 @@
   },
   "scripts": {
     "lint": "eslint **/*.{js,jsx} --quiet",
-    "build": "webpack",
-    "dev": "webpack-dev-server --hot",
-    "lint": "eslint **/*.{js,jsx} --quiet"
+    "build": "webpack --config webpack.config.js --watch",
+    "dev": "nodemon src/backEnd/server.js",
+    "resetDB": "node ./database/db_build",
+    "start": "node src/backEnd/server.js"
   },
+  "proxy": "http://localhost:8080",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FACN3/cryptoCoin.git"

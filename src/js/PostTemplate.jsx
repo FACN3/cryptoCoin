@@ -22,7 +22,7 @@ const p = {
 const posts = props => (
   <DivContainer>
     <div>
-      <h4>{props.post.name}</h4>
+      <h4>{props.post.user_name}</h4>
     </div>
     <div>
       <h4>{props.post.preferedPaymentMethod}</h4>
