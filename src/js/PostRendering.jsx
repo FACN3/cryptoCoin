@@ -27,8 +27,7 @@ class BuildPosts extends React.Component {
     if (!this.state.posts) {
       axios.get("/api/posts").then(response => {
         this.setState({posts: response.data});
-        console.log(this.state);
-      })
+      }).catch(err => (<h1>Server Problem!</h1>))
     }
   }
 

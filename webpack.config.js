@@ -19,7 +19,6 @@ module.exports = {
     colors: true,
     chunks: false
   },
-  plugins: [],
   module: {
     rules: [
       {
