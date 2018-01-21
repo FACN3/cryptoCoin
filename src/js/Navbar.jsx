@@ -121,23 +121,22 @@ const Navbar = () => (
             <Link to="/learn">LEARN</Link>
           </li>
         </NavbarDesktopLinks>
+          <NavbarMobileNavbar>
+            <h2>CryptoCoin</h2>
+            <li>
+              <Link to="/sell">SELL</Link>
+            </li>
+            <li>
+              <Link to="/buy">BUY</Link>
+            </li>
+            <li>
+              <Link to="/markets">MARKETS</Link>
+            </li>
+            <li>
+              <Link to="/learn">LEARN</Link>
+            </li>
+          </NavbarMobileNavbar>
       </div>
-    </div>
-    <div className="Navbar-mobile-navbar">
-      <NavbarMobileNavbar>
-        <li>
-          <Link to="/learn">LEARN</Link>
-        </li>
-        <li>
-          <Link to="/markets">MARKETS</Link>
-        </li>
-        <li>
-          <Link to="/buy">BUY</Link>
-        </li>
-        <li>
-          <Link to="/sell">SELL</Link>
-        </li>
-      </NavbarMobileNavbar>
     </div>
   </div>
 );
