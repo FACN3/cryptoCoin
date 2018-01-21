@@ -87,7 +87,7 @@ const Landing = () => (
         </Link>
       </LandingHeader>
       <LandingGraph className="landing-graph container-fluid">
-        <MarketData />
+        <MarketData test="hello" />
       </LandingGraph>
       <LandingSafety className="landing-safety">
         <h2>SAFELY MAKE YOUR FIRST TRADE</h2>

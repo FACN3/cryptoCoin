@@ -100,6 +100,9 @@ const Navbar = () => (
     <div className="Navbar-desktop">
       <div className="Navbar-desktop-user">
         <NavbarDesktopUser>
+          <li>
+            <Link to="/publicchat">public chat</Link>
+          </li>
           <li>chat</li>
           <li>wallet</li>
           <li>user</li>

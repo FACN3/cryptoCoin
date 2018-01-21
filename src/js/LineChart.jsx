@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {
+  setDuration,
+  setCoin,
+  setHoverLoc,
+  setActivePoint
+} from './actionCreators';
 import './LineChart.css';
 
 class LineChart extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hoverLoc: null,
-      activePoint: null
-    };
   }
   // GET X & Y || MAX & MIN
   getX() {
     const { data, duration, coin } = this.props;
-
+    console.log('yes', data[coin]);
+    console.log('duration', duration);
+    console.log('coin', coin);
     return {
       min: data[coin][duration][0].x,
       max: data[coin][duration][data[coin][duration].length - 1].x
@@ -191,8 +196,8 @@ class LineChart extends Component {
 
     let closestPoint = {};
     for (let i = 0, c = 500; i < svgData.length; i++) {
-      if (Math.abs(svgData[i].svgX - this.state.hoverLoc) <= c) {
-        c = Math.abs(svgData[i].svgX - this.state.hoverLoc);
+      if (Math.abs(svgData[i].svgX - this.props.hoverLoc) <= c) {
+        c = Math.abs(svgData[i].svgX - this.props.hoverLoc);
         closestPoint = svgData[i];
       }
     }
@@ -200,16 +205,15 @@ class LineChart extends Component {
     if (relativeLoc - yLabelSize < 0) {
       this.stopHover();
     } else {
-      this.setState({
-        hoverLoc: relativeLoc,
-        activePoint: closestPoint
-      });
-      this.props.onChartHover(relativeLoc, closestPoint);
+      this.props.handleHover(relativeLoc, closestPoint);
     }
+    this.props.onChartHover(relativeLoc, closestPoint);
   }
+
   // STOP HOVER
   stopHover() {
-    this.setState({ hoverLoc: null, activePoint: null });
+    this.props.handleHover(null, null);
+    // ({ hoverLoc: null, activePoint: null });
     this.props.onChartHover(null, null);
   }
   // MAKE ACTIVE POINT
@@ -220,8 +224,8 @@ class LineChart extends Component {
         className="linechart_point"
         style={{ stroke: color }}
         r={pointRadius}
-        cx={this.state.activePoint.svgX}
-        cy={this.state.activePoint.svgY}
+        cx={this.props.activePoint.svgX}
+        cy={this.props.activePoint.svgY}
       />
     );
   }
@@ -231,9 +235,9 @@ class LineChart extends Component {
     return (
       <line
         className="hoverLine"
-        x1={this.state.hoverLoc}
+        x1={this.props.hoverLoc}
         y1={-8}
-        x2={this.state.hoverLoc}
+        x2={this.props.hoverLoc}
         y2={svgHeight - xLabelSize}
       />
     );
@@ -256,8 +260,8 @@ class LineChart extends Component {
           {this.makePath()}
           {this.makeArea()}
           {this.makeLabels()}
-          {this.state.hoverLoc ? this.createLine() : null}
-          {this.state.hoverLoc ? this.makeActivePoint() : null}
+          {this.props.hoverLoc ? this.createLine() : null}
+          {this.props.hoverLoc ? this.makeActivePoint() : null}
         </g>
       </svg>
     );
@@ -274,4 +278,19 @@ LineChart.defaultProps = {
   yLabelSize: 80
 };
 
-export default LineChart;
+const mapStateToProps = state => ({
+  duration: state.duration,
+  data: state.data,
+  coin: state.coin,
+  hoverLoc: state.hoverLoc,
+  activePoint: state.activePoint
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleHover(relativeLoc, closestPoint) {
+    // dispatch(setHoverLoc(relativeLoc));
+    // dispatch(setActivePoint(closestPoint));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LineChart);
