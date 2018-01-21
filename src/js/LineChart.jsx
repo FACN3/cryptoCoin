@@ -15,11 +15,9 @@ class LineChart extends Component {
   // GET X & Y || MAX & MIN
   getX() {
     const { data, duration, coin } = this.props;
-    console.log('yes', data[coin]);
-    console.log('duration', duration);
-    console.log('coin', coin);
+    const lookAt = data[coin];
     return {
-      min: data[coin][duration][0].x,
+      min: lookAt[duration][0].x,
       max: data[coin][duration][data[coin][duration].length - 1].x
     };
   }
@@ -288,8 +286,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleHover(relativeLoc, closestPoint) {
-    // dispatch(setHoverLoc(relativeLoc));
-    // dispatch(setActivePoint(closestPoint));
+    dispatch(setHoverLoc(relativeLoc));
+    dispatch(setActivePoint(closestPoint));
   }
 });
 

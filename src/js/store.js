@@ -1,11 +1,13 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import promiseMiddleware from 'redux-promise-middleware';
+import rootReducer from './reducers/index';
 
 const store = createStore(
   rootReducer,
+  {},
   compose(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, promiseMiddleware()),
     typeof window === 'object' &&
     typeof window.devToolsExtension !== 'undefined'
       ? window.devToolsExtension()

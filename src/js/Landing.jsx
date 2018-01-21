@@ -67,7 +67,6 @@ const LandingSafety = styled.div`
 const LandingFooter = styled.div`
   float: right;
 `;
-
 const Landing = () => (
   <Wrapper>
     <div>

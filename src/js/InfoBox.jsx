@@ -17,16 +17,12 @@ class InfoBox extends Component {
     this.getData();
   }
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('nextpropsis ', nextProps);
-    console.log('this.props.coin', this.props.coin);
-
     return (
       this.props.coin !== nextProps.coin ||
       this.state.currentPrice !== nextState.currentPrice
     );
   }
   componentWillUpdate() {
-    console.log('componentwillupdate running');
     this.getData();
   }
   componentWillUnmount() {
@@ -49,9 +45,6 @@ class InfoBox extends Component {
             ? bitcoinData.bpi.USD.rate_float
             : bitcoinData.USD;
 
-        console.log('bitcoinData is', bitcoinData);
-        console.log('price is', price);
-        console.log('coin', this.props.coin);
         const change = price - data[coin][duration][0].y;
         const changeP =
           (price - data[coin][duration][0].y) / data[coin][duration][0].y * 100;

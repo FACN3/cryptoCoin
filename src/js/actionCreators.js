@@ -3,19 +3,18 @@ export function setCoin(coin) {
 }
 
 export function setDuration(duration) {
-  console.log('duration is', duration);
   return { type: 'SET_DURATION', payload: duration };
 }
 
 export function addAPIData(APIdata, coin, duration) {
-  console.log('COIN', coin);
-  return { type: 'ADD_API_DATA', payload: APIdata, coin, duration };
-}
-
-export function getAPIData() {}
-
-export function setFetchingData(fetchingData) {
-  return { type: 'SET_FETCHING_DATA', payload: fetchingData };
+  return {
+    type: 'ADD_API_DATA',
+    payload: APIdata,
+    metadata: {
+      coin,
+      duration
+    }
+  };
 }
 
 export function setActivePoint(activePoint) {

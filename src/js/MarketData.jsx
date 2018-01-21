@@ -10,7 +10,7 @@ import {
   setActivePoint,
   setFetchingData
 } from './actionCreators';
-import { getData1, getData2 } from './asyncActions';
+import getData from './asyncActions';
 import LineChart from './LineChart';
 import ToolTip from './ToolTip';
 import InfoBox from './InfoBox';
@@ -27,11 +27,7 @@ const coinCode = {
 
 class MarketData extends Component {
   componentDidMount() {
-    if (this.props.duration === ' 1M |') {
-      this.props.handleGetData2(this.props);
-    } else {
-      this.props.handleGetData1(this.props);
-    }
+    this.props.handleGetData(this.props);
   }
 
   // getData1(url) {
@@ -148,7 +144,8 @@ const url = {
       'https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=24&aggregate=1',
     ' 1W |':
       'https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=168',
-    ' 1M |': null,
+    ' 1M |':
+      'https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=30&aggregate=1',
     ' 1Y':
       'https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=365&aggregate=1'
   },
@@ -159,7 +156,8 @@ const url = {
       'https://min-api.cryptocompare.com/data/histohour?fsym=LTC&tsym=USD&limit=24&aggregate=1',
     ' 1W |':
       'https://min-api.cryptocompare.com/data/histohour?fsym=LTC&tsym=USD&limit=168',
-    ' 1M |': null,
+    ' 1M |':
+      'https://min-api.cryptocompare.com/data/histoday?fsym=LTC&tsym=USD&limit=30&aggregate=1',
     ' 1Y':
       'https://min-api.cryptocompare.com/data/histoday?fsym=LTC&tsym=USD&limit=365&aggregate=1'
   }
@@ -168,7 +166,7 @@ const url = {
 const mapStateToProps = state => ({
   coin: state.coin,
   duration: state.duration,
-  fetchingData: state.fetchingData,
+  fetchingData: state.data.isFetching,
   data: state.data,
   hoverLoc: state.hoverLoc,
   activePoint: state.activePoint
@@ -176,17 +174,16 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleDuration(event, props) {
     event.preventDefault();
+    console.log('chicken', event.target.text);
     dispatch(setDuration(event.target.text));
-    dispatch(setFetchingData(true));
-    if (props.duration === ' 1M |') {
+    console.log('url innit', url[props.coin][event.target.text]),
       dispatch(
-        getData2(url[props.coin][props.duration], props.coin, props.duration)
+        getData(
+          url[props.coin][event.target.text],
+          props.coin,
+          event.target.text
+        )
       );
-    } else {
-      dispatch(
-        getData1(url[props.coin][props.duration], props.coin, props.duration)
-      );
-    }
   }, // if this doesn't work then may require multiple actions for api request
   handleChartHover(hoverLoc, activePoint) {
     // dispatch(setHoverLoc(hoverLoc));
@@ -194,27 +191,16 @@ const mapDispatchToProps = dispatch => ({
   },
   handleCoin(event, props) {
     event.preventDefault();
-    // dispatch(setFetchingData(true));
+    const coin = coinCode[event.target.value];
+    dispatch(setCoin(coin));
+    dispatch(getData(url[coin][props.duration], coin, props.duration));
+  },
 
-    if (props.duration === ' 1M |') {
-      dispatch(
-        getData2(url[props.coin][props.duration], props.coin, props.duration)
-      );
-    } else {
-      dispatch(
-        getData1(url[props.coin][props.duration], props.coin, props.duration)
-      );
-    }
-    dispatch(setCoin(coinCode[event.target.value]));
-  },
-  handleGetData1(props) {
+  handleGetData(props) {
+    dispatch(setDuration(props.duration));
+    dispatch(setCoin(props.coin));
     dispatch(
-      getData1(url[props.coin][props.duration], props.coin, props.duration)
-    );
-  },
-  handleGetData2(props) {
-    dispatch(
-      getData2(url[props.coin][props.duration], props.coin, props.duration)
+      getData(url[props.coin][props.duration], props.coin, props.duration)
     );
   }
 });
