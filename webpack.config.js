@@ -9,7 +9,7 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './src/js/ClientApp.jsx'
   ],
-  devtool: 'cheap-eval-source-map',
+  devtool: 'inline-source-map',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
@@ -24,11 +24,17 @@ module.exports = {
   },
   module: {
     rules: [
+      // {
+      //   enforce: 'pre',
+      //   test: /\.js$/,
+      //   loader: 'eslint-loader',
+      //   exclude: /node_modules/
+      // },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react', 'stage-2']
+          presets: ['es2015', 'react']
         }
       },
       {
