@@ -7,6 +7,9 @@ import Learn from './Learn';
 import Markets from './Markets';
 import Buy from './Buy';
 import PublicChat from './PublicChat';
+import { addUser } from './actionCreators';
+
+store.dispatch(addUser('Me'));
 
 const App = () => (
   <Provider store={store}>

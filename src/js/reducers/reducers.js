@@ -79,3 +79,29 @@ export function data(state = defaultState, action) {
       return state;
   }
 }
+export function publicmessages(state = [], action) {
+  switch (action.type) {
+    case 'ADD_MESSAGE':
+    case 'MESSAGE_RECEIVED':
+      return state.concat([
+        {
+          message: action.message,
+          author: action.author,
+          id: action.id
+        }
+      ]);
+    default:
+      return state;
+  }
+}
+
+export function publicusers(state = [], action) {
+  switch (action.type) {
+    case 'ADD_USER':
+      return state.concat([{ name: action.name, id: action.id }]);
+    case 'USERS_LIST':
+      return action.users;
+    default:
+      return state;
+  }
+}

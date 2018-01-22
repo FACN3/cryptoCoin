@@ -14,18 +14,18 @@ const renderApp = () => {
 };
 renderApp();
 
-// if (module.hot) {
-//   module.hot.accept('./App', () => {
-//     const NextApp = require('./App').default;
-//
-//     render(
-//       <BrowserRouter>
-//         <NextApp />
-//       </BrowserRouter>,
-//       document.getElementById('root')
-//     );
-//   });
-// }
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
+
+    render(
+      <BrowserRouter>
+        <NextApp />
+      </BrowserRouter>,
+      document.getElementById('root')
+    );
+  });
+}
 
 // const renderApp = () => {
 //   render(

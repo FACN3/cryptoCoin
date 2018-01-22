@@ -29,6 +29,7 @@ module.exports = {
     chunks: false
   },
   plugins: [
+    // new webpack.optimize.UglifyJsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ],
