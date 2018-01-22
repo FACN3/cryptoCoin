@@ -8,8 +8,8 @@ class InfoBox extends Component {
     super(props);
     this.state = {
       currentPrice: null,
-      monthChangeD: null,
-      monthChangeP: null,
+      changeDollar: null,
+      changePercent: null,
       updatedAt: null
     };
   }
@@ -55,11 +55,11 @@ class InfoBox extends Component {
             : moment.utc().format('MMM D, YYYY hh:mm:ss');
         this.setState({
           currentPrice: price,
-          monthChangeD: change.toLocaleString('us-EN', {
+          changeDollar: change.toLocaleString('us-EN', {
             style: 'currency',
             currency: 'USD'
           }),
-          monthChangeP: `${changeP.toFixed(2)} %`,
+          changePercent: `${changeP.toFixed(2)} %`,
           updatedAt
         });
       })
@@ -108,12 +108,12 @@ class InfoBox extends Component {
         ) : null}
         {this.state.currentPrice ? (
           <div id="middle" className="box">
-            <div className="heading">{this.state.monthChangeD}</div>
+            <div className="heading">{this.state.changeDollar}</div>
             <div className="subtext">{`Change Since Last ${durationText} (USD)`}</div>
           </div>
         ) : null}
         <div id="right" className="box">
-          <div className="heading">{this.state.monthChangeP}</div>
+          <div className="heading">{this.state.changePercent}</div>
           <div className="subtext">
             {`Change Since Last ${durationText} (%)`}{' '}
           </div>
@@ -123,7 +123,6 @@ class InfoBox extends Component {
   }
 }
 
-// DEFAULT PROPS
 InfoBox.propTypes = {
   duration: PropTypes.string.isRequired,
   coin: PropTypes.string.isRequired

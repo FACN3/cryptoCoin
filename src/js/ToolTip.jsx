@@ -20,9 +20,4 @@ const ToolTip = props => {
   );
 };
 
-// ToolTip.propTypes = {
-//   hoverLoc:
-//   activePoint:
-// };
-
 export default ToolTip;

@@ -2,7 +2,7 @@ node_modules/
 public/bundle.js
 public/*bundle*
 config.env
-
+hmr.config
 
 
 # Logs
