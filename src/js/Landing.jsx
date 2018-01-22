@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   background-color: #2f9999;
@@ -17,6 +17,8 @@ const LandingNavbar = styled.div`
     float: right;
     margin: 5px;
     font-weight: bolder;
+    text-decoration: none;
+    color: #fff;
   }
   font-family: Roboto;
 `;
@@ -26,7 +28,7 @@ const LandingHeader = styled.div`
   word-wrap: break-word;
   padding-top: 50px;
   padding-bottom: 10vh;
-  font-family: 'Questrial';
+  font-family: "Questrial";
   font-size: 150%;
 
   button:hover:not(.active) {
@@ -43,7 +45,7 @@ const LandingGraph = styled.div`
   text-align: center;
 
   select {
-    font-family: 'Questrial';
+    font-family: "Questrial";
     font-weight: bold;
     font-size: 120%;
     background-color: #f7b733;
@@ -56,7 +58,7 @@ const LandingGraph = styled.div`
 const LandingSafety = styled.div`
   padding: 10vh;
   text-align: center;
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
 
   h2 {
     font-weight: 100;
@@ -73,8 +75,8 @@ const Landing = () => (
       <div className="landing-navbar">
         <LandingNavbar>
           <h2>CryptoCoin</h2>
-          <a> sign in</a>
-          <a> sign up </a>
+          <Link to="/login"> Sign In</Link>
+          <Link to="/signup"> Sign Up </Link>
         </LandingNavbar>
       </div>
       <LandingHeader className="landing-header">
@@ -98,7 +100,7 @@ const Landing = () => (
         <h2>SAFELY MAKE YOUR FIRST TRADE</h2>
         <p>
           learn how to buy cryptocurrency, which coin to invest in, all in one
-          place.{' '}
+          place.{" "}
         </p>
       </LandingSafety>
 

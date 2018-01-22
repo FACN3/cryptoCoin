@@ -5,7 +5,8 @@ import Learn from "./Learn";
 import Markets from "./Markets";
 import Buy from "./Buy";
 import Sell from "./Sell";
-
+import Login from "./Login";
+import Signup from "./Signup";
 
 const App = () => (
   <div>
@@ -16,6 +17,8 @@ const App = () => (
         <Route path="/markets" component={Markets} />
         <Route path="/buy" component={Buy} />
         <Route path="/sell" component={Sell} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
       </Switch>
     </BrowserRouter>
   </div>

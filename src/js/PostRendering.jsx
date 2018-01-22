@@ -35,8 +35,7 @@ class BuildPosts extends React.Component {
   render() {
     if (this.state.posts) {
       return (<AllPostsContainer>
-        {
-          (this.state.posts.map(post => {
+        {(this.state.posts.map(post => {
             if (this.props.page == post.buyerseller) {
               return <PostTemplate key={post.post_id} post={post}/>;
             }
