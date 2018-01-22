@@ -174,17 +174,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleDuration(event, props) {
     event.preventDefault();
-    console.log('chicken', event.target.text);
     dispatch(setDuration(event.target.text));
-    console.log('url innit', url[props.coin][event.target.text]),
-      dispatch(
-        getData(
-          url[props.coin][event.target.text],
-          props.coin,
-          event.target.text
-        )
-      );
-  }, // if this doesn't work then may require multiple actions for api request
+    dispatch(
+      getData(url[props.coin][event.target.text], props.coin, event.target.text)
+    );
+  },
   handleChartHover(hoverLoc, activePoint) {
     // dispatch(setHoverLoc(hoverLoc));
     // dispatch(setActivePoint(activePoint));

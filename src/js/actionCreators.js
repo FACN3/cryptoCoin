@@ -6,17 +6,6 @@ export function setDuration(duration) {
   return { type: 'SET_DURATION', payload: duration };
 }
 
-export function addAPIData(APIdata, coin, duration) {
-  return {
-    type: 'ADD_API_DATA',
-    payload: APIdata,
-    metadata: {
-      coin,
-      duration
-    }
-  };
-}
-
 export function setActivePoint(activePoint) {
   return { type: 'SET_ACTIVE_POINT', payload: activePoint };
 }
