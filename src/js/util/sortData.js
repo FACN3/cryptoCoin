@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export function sortData1(apiData) {
+export function cryptocompareSort(apiData) {
   const sortedData = apiData.map((val, index) => ({
     d: moment.unix(val.time).format('MMM DD h:mm a'),
     p: val.close.toLocaleString('us-EN', {
@@ -13,7 +13,7 @@ export function sortData1(apiData) {
   return sortedData;
 }
 
-export function sortData2(apiData) {
+export function coindeskSort(apiData) {
   const sortedData = [];
   let count = 0;
   for (let date in apiData) {
@@ -28,7 +28,6 @@ export function sortData2(apiData) {
     });
     count++;
   }
-  console.log('unicorndata', sortedData);
 
   return sortedData;
 }
