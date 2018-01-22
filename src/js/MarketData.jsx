@@ -30,8 +30,6 @@ class MarketData extends Component {
     this.props.handleGetData(this.props);
   }
 
-  // getData1(url) {
-
   render() {
     const Wrapper = styled.h2`
       color: #fc4a1a;
@@ -39,12 +37,12 @@ class MarketData extends Component {
 
     const { duration, coin } = this.props;
     const style = {
-      'text-decoration': 'none',
+      textDecoration: 'none',
       border: 'none'
     };
     const bold = {
-      'font-weight': 'bold',
-      'text-decoration': 'none'
+      fontWeight: 'bold',
+      textDecoration: 'none'
     };
     const durations = ['1H |', ' 1D |', ' 1W |', ' 1M |', ' 1Y'];
     return (
@@ -174,20 +172,14 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleDuration(event, props) {
     event.preventDefault();
-    console.log('chicken', event.target.text);
     dispatch(setDuration(event.target.text));
-    console.log('url innit', url[props.coin][event.target.text]),
-      dispatch(
-        getData(
-          url[props.coin][event.target.text],
-          props.coin,
-          event.target.text
-        )
-      );
-  }, // if this doesn't work then may require multiple actions for api request
+    dispatch(
+      getData(url[props.coin][event.target.text], props.coin, event.target.text)
+    );
+  },
   handleChartHover(hoverLoc, activePoint) {
-    // dispatch(setHoverLoc(hoverLoc));
-    // dispatch(setActivePoint(activePoint));
+    dispatch(setHoverLoc(hoverLoc));
+    dispatch(setActivePoint(activePoint));
   },
   handleCoin(event, props) {
     event.preventDefault();

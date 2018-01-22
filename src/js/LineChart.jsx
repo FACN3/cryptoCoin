@@ -211,7 +211,6 @@ class LineChart extends Component {
   // STOP HOVER
   stopHover() {
     this.props.handleHover(null, null);
-    // ({ hoverLoc: null, activePoint: null });
     this.props.onChartHover(null, null);
   }
   // MAKE ACTIVE POINT
@@ -276,12 +275,12 @@ LineChart.defaultProps = {
   yLabelSize: 80
 };
 
-const mapStateToProps = state => ({
-  duration: state.duration,
-  data: state.data,
-  coin: state.coin,
-  hoverLoc: state.hoverLoc,
-  activePoint: state.activePoint
+const mapStateToProps = ({ duration, data, coin, hoverLoc, activePoint }) => ({
+  duration,
+  data,
+  coin,
+  hoverLoc,
+  activePoint
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -5,37 +5,6 @@ const Learn = () => (
   <div>
     <Navbar page="learn" />
     <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
-    <h1>Learn PAGE</h1>
   </div>
 );
 

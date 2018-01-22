@@ -1,4 +1,4 @@
-import { sortData1, sortData2 } from '../util/sort_data';
+import { cryptocompareSort, coindeskSort } from '../util/sortData';
 
 export function coin(state = 'BTC', action) {
   if (action.type === 'SET_COIN') {
@@ -62,8 +62,12 @@ export function data(state = defaultState, action) {
     case 'ADD_API_DATA_FULFILLED':
       sortedData =
         action.meta.duration === ' 1M |' && action.meta.coin === 'BTC'
-          ? sortData2(action.payload.data.bpi, action.coin, action.duration)
-          : sortData1(action.payload.data.Data, action.coin, action.duration);
+          ? coindeskSort(action.payload.data.bpi, action.coin, action.duration)
+          : cryptocompareSort(
+              action.payload.data.Data,
+              action.coin,
+              action.duration
+            );
 
       return {
         ...state,

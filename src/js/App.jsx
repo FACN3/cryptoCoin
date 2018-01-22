@@ -6,6 +6,7 @@ import Landing from './Landing';
 import Learn from './Learn';
 import Markets from './Markets';
 import Buy from './Buy';
+import Sell from './Sell';
 import PublicChat from './PublicChat';
 import { addUser } from './actionCreators';
 
@@ -13,15 +14,14 @@ store.dispatch(addUser('Me'));
 
 const App = () => (
   <Provider store={store}>
-    <div>
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route path="/learn" component={Learn} />
-        <Route path="/markets" component={Markets} />
-        <Route path="/buy" component={Buy} />
-        <Route path="/publicchat" component={PublicChat} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route exact path="/" component={Landing} />
+      <Route path="/learn" component={Learn} />
+      <Route path="/markets" component={Markets} />
+      <Route path="/buy" component={Buy} />
+      <Route path="/sell" component={Sell} />
+      <Route path="/publicchat" component={PublicChat} />
+    </Switch>
   </Provider>
 );
 

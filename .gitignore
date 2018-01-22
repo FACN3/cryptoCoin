@@ -1,6 +1,9 @@
 node_modules/
 public/bundle.js
 public/*bundle*
+config.env
+.hmr.config
+
 
 # Logs
 logs
@@ -59,4 +62,4 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+*.env

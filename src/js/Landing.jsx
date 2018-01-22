@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import MarketData from './MarketData';
 
+
 const Wrapper = styled.div`
   background-color: #2f9999;
   color: white;
@@ -86,7 +87,8 @@ const Landing = () => (
         </Link>
       </LandingHeader>
       <LandingGraph className="landing-graph container-fluid">
-        <MarketData test="hello" />
+        <MarketData />
+
       </LandingGraph>
       <LandingSafety className="landing-safety">
         <h2>SAFELY MAKE YOUR FIRST TRADE</h2>
