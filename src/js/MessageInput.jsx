@@ -39,7 +39,6 @@ class MessageInput extends Component {
   }
 
   startCheckingTyping() {
-    console.log('Typing');
     this.typingInterval = setInterval(() => {
       if (Date.now() - this.lastUpdateTime > 300) {
         this.setState({ isTyping: false });
@@ -49,7 +48,6 @@ class MessageInput extends Component {
   }
 
   stopCheckingTyping() {
-    console.log('Stop Typing');
     if (this.typingInterval) {
       clearInterval(this.typingInterval);
       this.props.sendTyping(false);

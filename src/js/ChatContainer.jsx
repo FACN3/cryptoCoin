@@ -33,7 +33,6 @@ export default class ChatContainer extends Component {
   }
 
   addChat(chat, reset) {
-    console.log('addchatyo');
     const { socket } = this.props;
     const { chats } = this.state;
 
@@ -49,17 +48,14 @@ export default class ChatContainer extends Component {
     socket.on(
       typingEvent,
       this.updateTypingInChat(chat.id),
-      console.log('chatting')
     );
     socket.on(
       messageEvent,
       this.addMessageToChat(chat.id),
-      console.log('peepee', messageEvent)
     );
   }
 
   addMessageToChat(chatId) {
-    console.log('echo2');
     return message => {
       const { chats } = this.state;
       const newChats = chats.map(chat => {
@@ -72,7 +68,6 @@ export default class ChatContainer extends Component {
   }
 
   updateTypingInChat(chatId) {
-    console.log('echo');
     return ({ isTyping, user }) => {
       if (user !== this.props.user.name) {
         const { chats } = this.state;

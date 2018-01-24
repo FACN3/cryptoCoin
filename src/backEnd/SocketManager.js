@@ -1,5 +1,4 @@
 const { io } = require('./server.js');
-// console.log('poopoo', io);
 
 const { createUser, createMessage, createChat } = require('./Factories');
 
@@ -15,7 +14,6 @@ function sendTypingToChat(user, socket) {
 
 function sendMessageToChat(sender, socket) {
   return (chatId, message) => {
-    console.log(`MESSAGE_RECIEVED-${chatId}`);
     io.emit(`MESSAGE_RECIEVED-${chatId}`, createMessage({ message, sender }));
   };
 }
@@ -37,7 +35,6 @@ function isUser(userList, username) {
 }
 
 module.exports = function(socket) {
-  console.log('Socket Id:' + socket.id);
 
   let sendMessageToChatFromUser;
 
@@ -59,7 +56,6 @@ module.exports = function(socket) {
     sendTypingFromUser = sendTypingToChat(user.name, socket);
 
     io.emit('USER_CONNECTED', connectedUsers);
-    console.log(connectedUsers);
   });
 
   socket.on('disconnect', () => {
@@ -67,14 +63,12 @@ module.exports = function(socket) {
       connectedUsers = removeUser(connectedUsers, socket.user.name);
 
       io.emit('USER_DISCONNECTED', connectedUsers);
-      console.log('Disconnect', connectedUsers);
     }
   });
 
   socket.on('LOGOUT', () => {
     connectedUsers = removeUser(connectedUsers, socket.user.name);
     io.emit('USER_DISCONNECTED', connectedUsers);
-    console.log('Disconnect', connectedUsers);
   });
 
   socket.on('COMMUNITY_CHAT', callback => {

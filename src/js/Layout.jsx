@@ -30,9 +30,7 @@ class Layout extends Component {
   initSocket() {
     const socket = io(socketUrl);
 
-    socket.on('connect', () => {
-      console.log('Connected');
-    });
+    socket.on('connect');
 
     this.setState({ socket });
   }
