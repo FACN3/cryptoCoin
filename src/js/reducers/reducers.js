@@ -54,7 +54,6 @@ const defaultState = {
 };
 
 export function data(state = defaultState, action) {
-  let apiData;
   let sortedData;
   switch (action.type) {
     case 'ADD_API_DATA_PENDING':
