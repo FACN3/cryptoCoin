@@ -54,7 +54,6 @@ const defaultState = {
 };
 
 export function data(state = defaultState, action) {
-  let apiData;
   let sortedData;
   switch (action.type) {
     case 'ADD_API_DATA_PENDING':
@@ -83,3 +82,17 @@ export function data(state = defaultState, action) {
       return state;
   }
 }
+
+export function authenticated(state = false, action) {
+  if (action.type === 'SET_AUTHENTICATED') {
+    return action.payload;
+  }
+  return state;
+}
+
+// export function landingRedirect(state = '/login', action) {
+//   if (action.type === 'SET_LANDING_REDIRECT') {
+//     return action.payload;
+//   }
+//   return state;
+// }

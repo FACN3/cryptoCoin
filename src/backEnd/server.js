@@ -8,11 +8,10 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, '../..')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-
-app.use("/api", router);
-app.get("/*", authenticate, (req, res) => {
+app.use('/api', router);
+app.get('/*', authenticate, (req, res) => {
   res.sendFile(path.resolve(__dirname, '../..', 'index.html'));
 });
 

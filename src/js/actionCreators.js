@@ -13,3 +13,11 @@ export function setActivePoint(activePoint) {
 export function setHoverLoc(hoverLoc) {
   return { type: 'SET_HOVER_LOC', payload: hoverLoc };
 }
+
+export function setAuthenticated(authenticated) {
+  return { type: 'SET_AUTHENTICATED', payload: authenticated };
+}
+
+export function setLandingRedirect(redirect) {
+  return { type: 'SET_LANDING_REDIRECT', payload: redirect };
+}
