@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const NavbarDesktopUser = styled.div`
+  z-index: 1;
   position: fixed;
   list-style-type: none;
   width: -webkit-fill-available;
@@ -124,21 +125,21 @@ const Navbar = () => (
             <Link to="/learn">LEARN</Link>
           </li>
         </NavbarDesktopLinks>
-          <NavbarMobileNavbar>
-            <h2>CryptoCoin</h2>
-            <li>
-              <Link to="/sell">SELL</Link>
-            </li>
-            <li>
-              <Link to="/buy">BUY</Link>
-            </li>
-            <li>
-              <Link to="/markets">MARKETS</Link>
-            </li>
-            <li>
-              <Link to="/learn">LEARN</Link>
-            </li>
-          </NavbarMobileNavbar>
+        <NavbarMobileNavbar>
+          <h2>CryptoCoin</h2>
+          <li>
+            <Link to="/sell">SELL</Link>
+          </li>
+          <li>
+            <Link to="/buy">BUY</Link>
+          </li>
+          <li>
+            <Link to="/markets">MARKETS</Link>
+          </li>
+          <li>
+            <Link to="/learn">LEARN</Link>
+          </li>
+        </NavbarMobileNavbar>
       </div>
     </div>
   </div>

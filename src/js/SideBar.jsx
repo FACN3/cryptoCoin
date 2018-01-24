@@ -9,21 +9,19 @@ export default class SideBar extends Component {
     const { chats, activeChat, user, setActiveChat, logout } = this.props;
     return (
       <div id="side-bar">
-        <div className="heading">
-          <div className="app-name">
-            Our Cool Chat <FAChevronDown />
-          </div>
+        {/* <div className="heading">
+          <div className="app-name">Chat</div>
           <div className="menu">
             <FAMenu />
           </div>
-        </div>
-        <div className="search">
+        </div> */}
+        {/* <div className="search">
           <i className="search-icon">
             <FASearch />
           </i>
           <input placeholder="Search" type="text" />
           <div className="plus" />
-        </div>
+        </div> */}
         <div
           className="users"
           ref="users"
@@ -36,24 +34,23 @@ export default class SideBar extends Component {
               const lastMessage = chat.messages[chat.messages.length - 1];
               const user = chat.users.find(({ name }) => {
                 return name !== this.props.name;
-              }) || { name: 'Community' };
+              }) || { name: 'Users' };
               const classNames =
                 activeChat && activeChat.id === chat.id ? 'active' : '';
 
               return (
                 <div
-                  key={chat.id}
-                  className={`user ${classNames}`}
-                  onClick={() => {
-                    setActiveChat(chat);
-                  }}
+                // key={chat.id}
+                // className={`user ${classNames}`}
+                // onClick={() => {
+                //   setActiveChat(chat);
+                // }}
                 >
-                  <div className="user-photo">{user.name[0].toUpperCase()}</div>
                   <div className="user-info">
                     <div className="name">{user.name}</div>
-                    {lastMessage && (
+                    {/* {lastMessage && (
                       <div className="last-message">{lastMessage.message}</div>
-                    )}
+                    )} */}
                   </div>
                 </div>
               );
@@ -64,7 +61,7 @@ export default class SideBar extends Component {
         </div>
         <div className="current-user">
           <span>{user.name}</span>
-          <div
+          {/* <div
             onClick={() => {
               logout();
             }}
@@ -72,7 +69,7 @@ export default class SideBar extends Component {
             className="logout"
           >
             <MdEject />
-          </div>
+          </div> */}
         </div>
       </div>
     );
