@@ -96,6 +96,7 @@ const NavbarMobileNavbar = styled.ul `
   }
 `;
 
+
 class Navbar extends React.Component {
   constructor(props){
     super(props);

@@ -9,7 +9,7 @@ const SellHeader = styled.h2`
 const SellSubheader = styled.h3`
   text-align: center;
 `;
-SellHeader;
+
 const Sell = () => (
   <div>
     <Navbar />

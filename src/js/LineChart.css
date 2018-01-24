@@ -1,0 +1,33 @@
+.linechart {
+  padding: 8px;
+}
+.linechart_path {
+  stroke-width: 3;
+  fill: none;
+}
+
+.linechart_axis {
+  stroke: #fc4a1a;
+}
+
+.linechart_point {
+  fill: #fff;
+  stroke-width: 2;
+}
+
+.linechart_area {
+  padding: 8px;
+  fill: #fc4a1a;
+  stroke: none;
+  opacity: 0.4;
+}
+
+.linechart_label {
+  fill: #fc4a1a;
+  font-weight: 700;
+}
+
+.hoverLine {
+  stroke: #fc4a1a;
+  stroke-width: 1;
+}
