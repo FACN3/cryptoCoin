@@ -48,9 +48,6 @@ class LoginForm extends Component {
             <h2>Enter your nickname</h2>
           </label>
           <input
-            // ref={input => {
-            //   this.textINput = input;
-            // }}
             type="text"
             id="nickname"
             value={nickname}

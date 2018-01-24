@@ -26,19 +26,3 @@ if (module.hot) {
     );
   });
 }
-
-// const renderApp = () => {
-//   render(
-//     <BrowserRouter>
-//       <App />
-//     </BrowserRouter>,
-//     document.getElementById('app')
-//   );
-// };
-// renderApp();
-//
-// if (module.hot) {
-//   module.hot.accept('./App', () => {
-//     renderApp();
-//   });
-// }

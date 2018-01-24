@@ -9,19 +9,6 @@ export default class SideBar extends Component {
     const { chats, activeChat, user, setActiveChat, logout } = this.props;
     return (
       <div id="side-bar">
-        {/* <div className="heading">
-          <div className="app-name">Chat</div>
-          <div className="menu">
-            <FAMenu />
-          </div>
-        </div> */}
-        {/* <div className="search">
-          <i className="search-icon">
-            <FASearch />
-          </i>
-          <input placeholder="Search" type="text" />
-          <div className="plus" />
-        </div> */}
         <div
           className="users"
           ref="users"
@@ -39,18 +26,9 @@ export default class SideBar extends Component {
                 activeChat && activeChat.id === chat.id ? 'active' : '';
 
               return (
-                <div
-                // key={chat.id}
-                // className={`user ${classNames}`}
-                // onClick={() => {
-                //   setActiveChat(chat);
-                // }}
-                >
+                <div>
                   <div className="user-info">
                     <div className="name">{user.name}</div>
-                    {/* {lastMessage && (
-                      <div className="last-message">{lastMessage.message}</div>
-                    )} */}
                   </div>
                 </div>
               );
@@ -61,15 +39,6 @@ export default class SideBar extends Component {
         </div>
         <div className="current-user">
           <span>{user.name}</span>
-          {/* <div
-            onClick={() => {
-              logout();
-            }}
-            title="Logout"
-            className="logout"
-          >
-            <MdEject />
-          </div> */}
         </div>
       </div>
     );

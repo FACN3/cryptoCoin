@@ -123,7 +123,6 @@ class InfoBox extends Component {
   }
 }
 
-// DEFAULT PROPS
 InfoBox.propTypes = {
   duration: PropTypes.string.isRequired,
   coin: PropTypes.string.isRequired

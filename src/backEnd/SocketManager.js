@@ -5,7 +5,6 @@ const { createUser, createMessage, createChat } = require('./Factories');
 let connectedUsers = {};
 
 const communityChat = createChat();
-// object of messages, names, users
 function sendTypingToChat(user, socket) {
   return (chatId, isTyping) => {
     io.emit(`TYPING-${chatId}`, { user, isTyping });

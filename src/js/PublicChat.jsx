@@ -158,7 +158,7 @@ const Wrapper = styled.div`
   }
 
   #side-bar .users {
-    ${'' /* overflow-y: scroll; */} background: #2f9999;
+    ${''} background: #2f9999;
     flex-grow: 1;
     text-align: center;
     height: 4.5vh;
@@ -384,20 +384,7 @@ const Wrapper = styled.div`
   }
 
   ${
-    '' /* .message-container .message::before {
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-    border-right-color: #2f9999;
-    border-style: solid;
-    border-top-color: #2f9999;
-    border-width: 4px;
-    content: '';
-    height: 0;
-    left: -7px;
-    position: absolute;
-    top: 0;
-    width: 0;
-  } */
+    ''
   }
 
   .message-container.right {
@@ -428,11 +415,10 @@ const Wrapper = styled.div`
   }
 
   ${
-    '' /* .message-container.right .message::before {
-    ${'' /* border-top-color: #2f999; */
+    ''
   }
-    ${'' /* border-left-color: #2f999; */}
-    ${'' /* border-right-color: transparent; */}
+    ${'' }
+    ${'' }
     left: auto;
     right: -7px;
   } */}
