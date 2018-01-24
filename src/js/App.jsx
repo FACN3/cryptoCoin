@@ -7,6 +7,8 @@ import Buy from "./Buy";
 import Sell from "./Sell";
 import Login from "./Login";
 import Signup from "./Signup";
+import UserPage from "./UserPage";
+
 
 const App = () => (
   <div>
@@ -19,6 +21,8 @@ const App = () => (
         <Route path="/sell" component={Sell} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/user" component={UserPage} />
+
       </Switch>
     </BrowserRouter>
   </div>

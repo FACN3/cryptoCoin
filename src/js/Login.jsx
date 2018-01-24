@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
+import ReactDOM from 'react-dom';
+import axios from 'axios';
 
-
-const LandingNavbar = styled.div`
+const LandingNavbar = styled.div `
   a {
     float: right;
     margin: 5px;
@@ -14,7 +15,7 @@ const LandingNavbar = styled.div`
   font-family: Roboto;
 `;
 
-const LoginDiv = styled.div`
+const LoginDiv = styled.div `
   /* Demo 3 */
 
   .form-3 {
@@ -63,9 +64,6 @@ const LoginDiv = styled.div`
 
     /* Styles */
     background: #1f2124; /* Fallback */
-    background: -moz-linear-gradient(#1f2124, #27292c);
-    background: -ms-linear-gradient(#1f2124, #27292c);
-    background: -o-linear-gradient(#1f2124, #27292c);
     background: -webkit-gradient(
       linear,
       0 0,
@@ -240,43 +238,72 @@ const LoginDiv = styled.div`
   }
 `;
 
-const LoginPage = () => (
-  <div>
+class LoginPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      invalidInput: null,
+      loggedin: false,
+      username: null,
+      password: null
+    }
 
+    this.handleUser = this.handleUser.bind(this)
+    this.handlePassword = this.handlePassword.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
-    <LandingNavbar>
-      <Link to="/login"> Sign In</Link>
-      <Link to="/signup"> Sign Up </Link>
-    </LandingNavbar>
+  }
+  
+  handleSubmit(e) {
+    e.preventDefault()
+    const {username} = this.state;
+    const {password} = this.state;
+    axios.post("/api/login", {username, password}).then(response => {
+      if (response.status == 500) {
+        this.setState({invalidInput: "oooops Server error"});
+      } else if (response.status == 200) {
+        if (response.data == "") {
+          this.setState({loggedin: true});
+        } else {
+          this.setState({invalidInput: response.data});
+        }
+      }
+    })
+  }
+  handleUser(e) {
+    this.setState({username: e.target.value})
+  }
+  handlePassword(e) {
+    this.setState({password: e.target.value})
+  }
 
-    <LoginDiv>
+  render() {
+    if (this.state.loggedin) {
+      return <Redirect to='/learn'/>
+    } else {
+      return (<div>
 
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="Username" />
+        <LoginDiv>
+          <form onSubmit={this.handleSubmit} action="/api/login" method="POST" className="form-3">
+            <label htmlFor="username">Username</label>
+            <input type="text" name="username" id="username" onChange={this.handleUser} placeholder="Username"/>
 
-        <label for="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password"
-        />
-        <input type="checkbox" name="remember" id="remember" />
-        <label for="remember">Remember me</label>
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" onChange={this.handlePassword} id="password" placeholder="Password"/>
+            <input type="checkbox" name="remember" id="remember"/>
+            <label htmlFor="remember">Remember me</label>
 
-        <input type="submit" id="submitButton" name="submit" value="Sign in" />
-
-    </LoginDiv>
-  </div>
-);
-
-document.getElementById('submitButton').eventListener("submit",()=>{
-  axios.post("/api/login",{
-    username:document.getElementById('username').value ,
-    password:document.getElementById('password').value
-  }).then(response => {
-    });
-})
-})
+            <input type="submit" id="submitButton" name="submit" value="Sign in"/>
+            <label>{
+                this.state.invalidInput
+                  ? this.state.invalidInput
+                  : ''
+              }</label>
+          </form>
+        </LoginDiv>
+      </div>);
+    }
+  }
+}
 
 export default LoginPage;

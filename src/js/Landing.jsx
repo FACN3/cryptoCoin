@@ -83,7 +83,7 @@ const Landing = () => (
         <h1>
           GET INTO CRYPTOCURRENCIES <br /> TODAY
         </h1>
-        <Link to="/learn">
+        <Link to="/signup">
           <button type="">Begin your journey</button>
         </Link>
       </LandingHeader>

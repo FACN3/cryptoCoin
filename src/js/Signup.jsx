@@ -249,22 +249,22 @@ const SignupPage = () => (
     <SignupDiv>
       <form className="form-3" action='/api/newUser' method='POST'>
 
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
         <input type="text" name="username" id="username" placeholder="Username" required/>
 
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input type="email" name="email" id="email" placeholder="Email" required/>
 
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input type="password" name="password" id="password" placeholder="Password" required />
 
-        <label for="password">Confirm Password</label>
+        <label htmlFor="password">Confirm Password</label>
         <input type="password" name="passwordMatch" id="passwordMatch" placeholder="Password" required />
 
-        <label for="country">Country</label>
+        <label htmlFor="country">Country</label>
         <input type="country" name="country" id="country" placeholder="Country" required/>
 
-        <label for="city">City</label>
+        <label htmlFor="city">City</label>
         <input type="city" name="city" id="city" placeholder="City" required/>
 
         <input type="submit" name="submit" value="Sign Up" />

@@ -2,11 +2,12 @@ const connect = require("../db_connection");
 const bcrypt = require("bcrypt");
 
 const validateUser = (user,cb)=>{
+
   connect.query(`SELECT * FROM users WHERE username = $1`,[user.username],(err,res)=>{
     if(err){
     return  cb(err)
     }
-    if(!res){
+    if(res.rows.length==0){
       return cb(null,0);
     }
 
