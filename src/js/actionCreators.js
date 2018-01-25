@@ -21,3 +21,11 @@ export function setAuthenticated(authenticated) {
 export function setLandingRedirect(redirect) {
   return { type: 'SET_LANDING_REDIRECT', payload: redirect };
 }
+
+export function setUsername(username) {
+  return { type: 'SET_USERNAME', payload: username };
+}
+
+export function setSocket(socket) {
+  return { type: 'SET_SOCKET', payload: socket };
+}

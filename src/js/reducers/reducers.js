@@ -90,6 +90,20 @@ export function authenticated(state = false, action) {
   return state;
 }
 
+export function username(state = null, action) {
+  if (action.type === 'SET_USERNAME') {
+    return action.payload;
+  }
+  return state;
+}
+
+export function socket(state = null, action) {
+  if (action.type === 'SET_SOCKET') {
+    return action.payload;
+  }
+  return state;
+}
+
 // export function landingRedirect(state = '/login', action) {
 //   if (action.type === 'SET_LANDING_REDIRECT') {
 //     return action.payload;

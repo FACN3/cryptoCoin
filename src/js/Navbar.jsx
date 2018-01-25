@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from 'axios';
+import { setUsername } from './actionCreators';
 
 const NavbarDesktopUser = styled.div`
   z-index: 1;
@@ -105,24 +107,20 @@ class Navbar extends React.Component {
     };
   }
   componentDidMount() {
-    axios
-      .get('/api/username')
-      .then(response => {
-        this.setState({ username: response });
-      })
-      .catch(err => {
-        console.log('err => ', err);
-      });
+    this.props.handleUsername();
   }
   render() {
+    const { username } = this.props;
     return (
       <div>
         <div className="Navbar-desktop">
           <div className="Navbar-desktop-user">
             <NavbarDesktopUser>
-              <li>chat</li>
+              <Link to="/publicChat">
+                <li>chat</li>
+              </Link>
               <li>wallet</li>
-              <li>user</li>
+              <li>{username}</li>
             </NavbarDesktopUser>
           </div>
           <div className="Navbar-desktop-links">
@@ -162,4 +160,22 @@ class Navbar extends React.Component {
     );
   }
 }
-export default Navbar;
+
+const mapStateToProps = state => ({
+  username: state.username
+});
+const mapDispatchToProps = dispatch => ({
+  handleUsername() {
+    console.log('peepee');
+    axios
+      .get('/api/username')
+      .then(response => {
+        dispatch(setUsername(response.data));
+      })
+      .catch(err => {
+        console.log('err => ', err);
+      });
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

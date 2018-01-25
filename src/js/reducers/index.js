@@ -6,7 +6,9 @@ import {
   hoverLoc,
   activePoint,
   authenticated,
-  landingRedirect
+  landingRedirect,
+  username,
+  socket
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -16,7 +18,9 @@ const rootReducer = combineReducers({
   activePoint,
   data,
   authenticated,
-  landingRedirect
+  landingRedirect,
+  username,
+  socket
 });
 
 export default rootReducer;

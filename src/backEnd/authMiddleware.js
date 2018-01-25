@@ -3,8 +3,10 @@ const exclude = ['/', '/login', '/signup'];
 require('env2')('config.env');
 
 const authenticate = (req, res, next) => {
+  console.log(req.headers.cookie);
+  console.log('done');
   if (req.headers.cookie) {
-    const regex = /jwt=\S+/;
+    const regex = /jwt=[^;]+/;
     let cookieString;
     try {
       cookieString = req.headers.cookie.match(regex);

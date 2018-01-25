@@ -383,9 +383,7 @@ const Wrapper = styled.div`
     }
   }
 
-  ${
-    ''
-  }
+  ${''}
 
   .message-container.right {
     text-align: right;
@@ -414,11 +412,9 @@ const Wrapper = styled.div`
     border-top-left-radius: 5px;
   }
 
-  ${
-    ''
-  }
-    ${'' }
-    ${'' }
+  ${''}
+    ${''}
+    ${''}
     left: auto;
     right: -7px;
   } */}
@@ -497,9 +493,7 @@ const Wrapper = styled.div`
 const PublicChat = () => (
   <div>
     <Navbar />
-
-    <h1>this is the public chat page </h1>
-    <h2>hello</h2>
+    <h1>Chat </h1>
     <div>
       <Wrapper>
         <Layout />

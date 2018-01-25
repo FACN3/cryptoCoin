@@ -41,11 +41,13 @@ router.post('/login', (req, res) => {
   });
 });
 router.get('/username', (req, res) => {
-  const regex = /jwt=\S+/;
+  console.log('in /username');
+  const regex = /jwt=[^;]+/;
   let cookieString;
   try {
     cookieString = req.headers.cookie.match(regex);
   } catch (err) {
+    console.log('error is', err);
     return res.redirect('/cookieError');
   }
   jwt.verify(
@@ -63,7 +65,7 @@ router.get('/cookieError', (req, res) => {
   res.end('please clear cookies!');
 });
 router.get('/userPosts', (req, res) => {
-  const regex = /jwt=\S+/;
+  const regex = /jwt=[^;]+/;
   let cookieString;
   try {
     cookieString = req.headers.cookie.match(regex);
@@ -85,7 +87,7 @@ router.get('/userPosts', (req, res) => {
 });
 
 router.get('/authenticated', (req, res) => {
-  const regex = /jwt=\S+/;
+  const regex = /jwt=[^;]+/;
   const cookieString = req.headers.cookie
     ? req.headers.cookie.match(regex)
     : null;
