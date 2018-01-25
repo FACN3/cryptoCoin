@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import styled from 'styled-components';
 import MarketData from './MarketData';
+import { setAuthenticated } from './actionCreators';
 
 const Wrapper = styled.div`
   background-color: #2f9999;
@@ -18,6 +21,8 @@ const LandingNavbar = styled.div`
     float: right;
     margin: 5px;
     font-weight: bolder;
+    text-decoration: none;
+    color: #fff;
   }
   font-family: Roboto;
 `;
@@ -40,6 +45,7 @@ const LandingHeader = styled.div`
   }
 `;
 const LandingGraph = styled.div`
+  padding: 20px 10px;
   background-color: #f0ebe1;
   text-align: center;
 
@@ -67,40 +73,61 @@ const LandingSafety = styled.div`
 const LandingFooter = styled.div`
   float: right;
 `;
-const Landing = () => (
-  <Wrapper>
-    <div>
-      <div className="landing-navbar">
-        <LandingNavbar>
-          <h2>CryptoCoin</h2>
-          <a> sign in</a>
-          <a> sign up </a>
-        </LandingNavbar>
-      </div>
-      <LandingHeader className="landing-header">
-        <h1>
-          GET INTO CRYPTOCURRENCIES <br /> TODAY
-        </h1>
-        <Link to="/learn">
-          <button type="">Begin your journey</button>
-        </Link>
-      </LandingHeader>
-      <LandingGraph className="landing-graph container-fluid">
-        <MarketData />
-      </LandingGraph>
-      <LandingSafety className="landing-safety">
-        <h2>SAFELY MAKE YOUR FIRST TRADE</h2>
-        <p>
-          learn how to buy cryptocurrency, which coin to invest in, all in one
-          place.{' '}
-        </p>
-      </LandingSafety>
+class Landing extends Component {
+  componentDidMount() {
+    this.props.handleBeginJourney();
+  }
+  render() {
+    const landingRedirect = this.props.authenticated ? '/learn' : '/login';
+    return (
+      <Wrapper>
+        <div>
+          <div className="landing-navbar">
+            <LandingNavbar>
+              <h2>CryptoCoin</h2>
+              <Link to="/login"> Sign In</Link>
+              <Link to="/signup"> Sign Up </Link>
+            </LandingNavbar>
+          </div>
+          <LandingHeader className="landing-header">
+            <h1>
+              GET INTO CRYPTOCURRENCIES <br /> TODAY
+            </h1>
+            <Link to={landingRedirect}>
+              <button type="" onSubmit={this.props.handleBeginJourney}>
+                Begin your journey
+              </button>
+            </Link>
+          </LandingHeader>
+          <LandingGraph className="landing-graph container-fluid">
+            <MarketData />
+          </LandingGraph>
+          <LandingSafety className="landing-safety">
+            <h2>SAFELY MAKE YOUR FIRST TRADE</h2>
+            <p>
+              learn how to buy cryptocurrency, which coin to invest in, all in
+              one place.{' '}
+            </p>
+          </LandingSafety>
 
-      <LandingFooter className="landing-footer">
-        Contact Us Security Help
-      </LandingFooter>
-    </div>
-  </Wrapper>
-);
+          <LandingFooter className="landing-footer">
+            Contact Us Security Help
+          </LandingFooter>
+        </div>
+      </Wrapper>
+    );
+  }
+}
+const mapStatetoProps = state => ({
+  authenticated: state.authenticated
+  // landingRedirect: state.landingRedirect
+});
+const mapDispatchtoProps = dispatch => ({
+  handleBeginJourney() {
+    axios.get('/api/authenticated').then(result => {
+      dispatch(setAuthenticated(result.data));
+    });
+  }
+});
 
-export default Landing;
+export default connect(mapStatetoProps, mapDispatchtoProps)(Landing);

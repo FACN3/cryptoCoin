@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const NavbarDesktopUser = styled.div`
   z-index: 1;
@@ -96,53 +97,69 @@ const NavbarMobileNavbar = styled.ul`
   }
 `;
 
-const Navbar = () => (
-  <div>
-    <div className="Navbar-desktop">
-      <div className="Navbar-desktop-user">
-        <NavbarDesktopUser>
-          <li>
-            <Link to="/publicchat">public chat</Link>
-          </li>
-          <li>chat</li>
-          <li>wallet</li>
-          <li>user</li>
-        </NavbarDesktopUser>
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: null
+    };
+  }
+  componentDidMount() {
+    axios
+      .get('/api/username')
+      .then(response => {
+        this.setState({ username: response });
+      })
+      .catch(err => {
+        console.log('err => ', err);
+      });
+  }
+  render() {
+    return (
+      <div>
+        <div className="Navbar-desktop">
+          <div className="Navbar-desktop-user">
+            <NavbarDesktopUser>
+              <li>chat</li>
+              <li>wallet</li>
+              <li>user</li>
+            </NavbarDesktopUser>
+          </div>
+          <div className="Navbar-desktop-links">
+            <NavbarDesktopLinks>
+              <h2>CryptoCoin</h2>
+              <li>
+                <Link to="/sell">SELL</Link>
+              </li>
+              <li>
+                <Link to="/buy">BUY</Link>
+              </li>
+              <li>
+                <Link to="/markets">MARKETS</Link>
+              </li>
+              <li>
+                <Link to="/learn">LEARN</Link>
+              </li>
+            </NavbarDesktopLinks>
+            <NavbarMobileNavbar>
+              <h2>CryptoCoin</h2>
+              <li>
+                <Link to="/sell">SELL</Link>
+              </li>
+              <li>
+                <Link to="/buy">BUY</Link>
+              </li>
+              <li>
+                <Link to="/markets">MARKETS</Link>
+              </li>
+              <li>
+                <Link to="/learn">LEARN</Link>
+              </li>
+            </NavbarMobileNavbar>
+          </div>
+        </div>
       </div>
-      <div className="Navbar-desktop-links">
-        <NavbarDesktopLinks>
-          <h2>CryptoCoin</h2>
-          <li>
-            <Link to="/sell">SELL</Link>
-          </li>
-          <li>
-            <Link to="/buy">BUY</Link>
-          </li>
-          <li>
-            <Link to="/markets">MARKETS</Link>
-          </li>
-          <li>
-            <Link to="/learn">LEARN</Link>
-          </li>
-        </NavbarDesktopLinks>
-        <NavbarMobileNavbar>
-          <h2>CryptoCoin</h2>
-          <li>
-            <Link to="/sell">SELL</Link>
-          </li>
-          <li>
-            <Link to="/buy">BUY</Link>
-          </li>
-          <li>
-            <Link to="/markets">MARKETS</Link>
-          </li>
-          <li>
-            <Link to="/learn">LEARN</Link>
-          </li>
-        </NavbarMobileNavbar>
-      </div>
-    </div>
-  </div>
-);
-
+    );
+  }
+}
 export default Navbar;

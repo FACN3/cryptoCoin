@@ -10,12 +10,15 @@ const SocketManager = require('./SocketManager');
 const router = require('./router');
 
 const PORT = process.env.PORT || 8080;
+const authenticate = require('./authMiddleware');
+
 
 app.use(express.static(path.resolve(__dirname, '../..')));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api', router);
-app.get('/*', (req, res) => {
+app.get('/*', authenticate, (req, res) => {
   res.sendFile(path.resolve(__dirname, '../..', 'index.html'));
 });
 

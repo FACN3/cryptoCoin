@@ -5,8 +5,8 @@ import {
   duration,
   hoverLoc,
   activePoint,
-  publicmessages,
-  publicusers
+  authenticated,
+  landingRedirect
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -15,8 +15,8 @@ const rootReducer = combineReducers({
   hoverLoc,
   activePoint,
   data,
-  publicmessages,
-  publicusers
+  authenticated,
+  landingRedirect
 });
 
 export default rootReducer;
