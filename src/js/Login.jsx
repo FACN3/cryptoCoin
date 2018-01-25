@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import {Link, Redirect} from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link, Redirect } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-const LandingNavbar = styled.div `
+const LandingNavbar = styled.div`
   a {
     float: right;
     margin: 5px;
@@ -15,11 +15,11 @@ const LandingNavbar = styled.div `
   font-family: Roboto;
 `;
 
-const LoginDiv = styled.div `
+const LoginDiv = styled.div`
   /* Demo 3 */
 
   .form-3 {
-    font-family: "Ubuntu", "Lato", sans-serif;
+    font-family: 'Ubuntu', 'Lato', sans-serif;
     font-weight: 400;
     /* Size and position */
     width: 300px;
@@ -53,8 +53,8 @@ const LoginDiv = styled.div `
     cursor: pointer;
   }
 
-  .form-3 input[type="text"],
-  .form-3 input[type="password"] {
+  .form-3 input[type='text'],
+  .form-3 input[type='password'] {
     /* Size and position */
     width: 50%;
     float: left;
@@ -78,19 +78,19 @@ const LoginDiv = styled.div `
     border-radius: 3px;
 
     /* Font styles */
-    font-family: "Ubuntu", "Lato", sans-serif;
+    font-family: 'Ubuntu', 'Lato', sans-serif;
     color: #fff;
   }
 
-  .form-3 input[type="text"]:hover,
-  .form-3 input[type="password"]:hover,
-  .form-3 label:hover ~ input[type="text"],
-  .form-3 label:hover ~ input[type="password"] {
+  .form-3 input[type='text']:hover,
+  .form-3 input[type='password']:hover,
+  .form-3 label:hover ~ input[type='text'],
+  .form-3 label:hover ~ input[type='password'] {
     background: #27292c;
   }
 
-  .form-3 input[type="text"]:focus,
-  .form-3 input[type="password"]:focus {
+  .form-3 input[type='text']:focus,
+  .form-3 input[type='password']:focus {
     box-shadow: inset 0 0 2px #000;
     background: #494d54;
     border-color: #51cbee;
@@ -103,7 +103,7 @@ const LoginDiv = styled.div `
     width: 50%;
   }
 
-  .form-3 label[for="remember"] {
+  .form-3 label[for='remember'] {
     width: auto;
     float: none;
     display: inline-block;
@@ -114,12 +114,12 @@ const LoginDiv = styled.div `
     text-indent: 2px;
   }
 
-  .form-3 input[type="checkbox"] {
+  .form-3 input[type='checkbox'] {
     margin-left: 10px;
     vertical-align: middle;
   }
 
-  .form-3 input[type="submit"] {
+  .form-3 input[type='submit'] {
     /* Width and position */
     width: 100%;
     padding: 8px 5px;
@@ -134,31 +134,31 @@ const LoginDiv = styled.div `
     cursor: pointer;
 
     /* Font styles */
-    font-family: "Ubuntu", "Lato", sans-serif;
+    font-family: 'Ubuntu', 'Lato', sans-serif;
     color: white;
     font-weight: 700;
     font-size: 15px;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
   }
 
-  .form-3 input[type="submit"]:hover {
+  .form-3 input[type='submit']:hover {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
-  .form-3 input[type="submit"]:active {
+  .form-3 input[type='submit']:active {
     background: #287db5;
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.6);
     border-color: #000; /* Fallback */
     border-color: rgba(0, 0, 0, 0.9);
   }
 
-  .no-boxshadow .form-3 input[type="submit"]:hover {
+  .no-boxshadow .form-3 input[type='submit']:hover {
     background: #2a92d8;
   }
 
   .form-3:after {
     /* Size and position */
-    content: "";
+    content: '';
     height: 1px;
     width: 33%;
     position: absolute;
@@ -195,7 +195,7 @@ const LoginDiv = styled.div `
 
   .form-3:before {
     /* Size and position */
-    content: "";
+    content: '';
     width: 8px;
     height: 5px;
     position: absolute;
@@ -209,7 +209,7 @@ const LoginDiv = styled.div `
 
   .form-3 p:nth-child(1):before {
     /* Size and position */
-    content: "";
+    content: '';
     width: 250px;
     height: 100px;
     position: absolute;
@@ -246,62 +246,84 @@ class LoginPage extends React.Component {
       loggedin: false,
       username: null,
       password: null
-    }
+    };
 
-    this.handleUser = this.handleUser.bind(this)
-    this.handlePassword = this.handlePassword.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-
+    this.handleUser = this.handleUser.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   handleSubmit(e) {
-    e.preventDefault()
-    const {username} = this.state;
-    const {password} = this.state;
-    axios.post("/api/login", {username, password}).then(response => {
+    e.preventDefault();
+    const { username } = this.state;
+    const { password } = this.state;
+    axios.post('/api/login', { username, password }).then(response => {
       if (response.status == 500) {
-        this.setState({invalidInput: "oooops Server error"});
+        this.setState({ invalidInput: 'oooops Server error' });
       } else if (response.status == 200) {
-        if (response.data == "") {
-          this.setState({loggedin: true});
+        if (response.data == '') {
+          this.setState({ loggedin: true });
         } else {
-          this.setState({invalidInput: response.data});
+          this.setState({ invalidInput: response.data });
         }
       }
-    })
+    });
   }
   handleUser(e) {
-    this.setState({username: e.target.value})
+    this.setState({ username: e.target.value });
   }
   handlePassword(e) {
-    this.setState({password: e.target.value})
+    this.setState({ password: e.target.value });
   }
 
   render() {
     if (this.state.loggedin) {
-      return <Redirect to='/learn'/>
+      return <Redirect to="/learn" />;
     } else {
-      return (<div>
+      return (
+        <div>
+          <LoginDiv>
+            <form
+              onSubmit={this.handleSubmit}
+              action="/api/login"
+              method="POST"
+              className="form-3"
+            >
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                onChange={this.handleUser}
+                placeholder="Username"
+                required
+              />
 
-        <LoginDiv>
-          <form onSubmit={this.handleSubmit} action="/api/login" method="POST" className="form-3">
-            <label htmlFor="username">Username</label>
-            <input type="text" name="username" id="username" onChange={this.handleUser} placeholder="Username"/>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                onChange={this.handlePassword}
+                id="password"
+                placeholder="Password"
+                required
+              />
+              <input type="checkbox" name="remember" id="remember" />
+              <label htmlFor="remember">Remember me</label>
 
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" onChange={this.handlePassword} id="password" placeholder="Password"/>
-            <input type="checkbox" name="remember" id="remember"/>
-            <label htmlFor="remember">Remember me</label>
-
-            <input type="submit" id="submitButton" name="submit" value="Sign in"/>
-            <label>{
-                this.state.invalidInput
-                  ? this.state.invalidInput
-                  : ''
-              }</label>
-          </form>
-        </LoginDiv>
-      </div>);
+              <input
+                type="submit"
+                id="submitButton"
+                name="submit"
+                value="Sign in"
+              />
+              <label>
+                {this.state.invalidInput ? this.state.invalidInput : ''}
+              </label>
+            </form>
+          </LoginDiv>
+        </div>
+      );
     }
   }
 }

@@ -1,19 +1,27 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const authenticate = require('./authMiddleware');
-const router = require('./router');
 
 const app = express();
-console.log(path.join(__dirname, "../.."));
-console.log(express.static(path.resolve(__dirname, "../..", "public")));
-app.use(express.static(path.resolve(__dirname, "../..", "public")))
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+const server = require('http').Server(app);
+var io = (module.exports.io = require('socket.io')(server));
 
-app.use("/api", router);
-app.get("/*", authenticate, (req, res) => {
+const SocketManager = require('./SocketManager');
+const router = require('./router');
+
+const PORT = process.env.PORT || 8080;
+const authenticate = require('./authMiddleware');
+
+
+app.use(express.static(path.resolve(__dirname, '../..')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/api', router);
+app.get('/*', authenticate, (req, res) => {
   res.sendFile(path.resolve(__dirname, '../..', 'index.html'));
 });
 
-app.listen(8080, () => console.log('on 8080'));
+io.on('connection', SocketManager);
+
+server.listen(PORT, () => console.log(`Connected to port ${PORT}`));

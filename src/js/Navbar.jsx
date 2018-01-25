@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const NavbarDesktopUser = styled.div`
+  z-index: 1;
   position: fixed;
   list-style-type: none;
   width: -webkit-fill-available;

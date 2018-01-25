@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PostTemplate from "./PostTemplate";
 import styled from "styled-components";
 import axios from "axios";
@@ -16,7 +16,7 @@ const AllPostsContainer = styled.div`
   }
 `;
 
-class BuildPosts extends React.Component {
+class BuildPosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,10 +25,12 @@ class BuildPosts extends React.Component {
   }
   componentDidMount() {
     if (!this.state.posts) {
-      axios.get("/api/posts").then(response => {
-        this.setState({ posts: response.data });
-        console.log(this.state);
-      });
+      axios
+        .get("/api/posts")
+        .then(response => {
+          this.setState({ posts: response.data });
+        })
+        .catch(err => <h1>Server Problem!</h1>);
     }
   }
 
