@@ -21,10 +21,11 @@ const NavbarDesktopUser = styled.div`
     color: white;
     margin: 0;
   }
-  li {
+  li,
+  a {
     float: right;
     margin: 0 auto;
-    font-family: 'ubuntu';
+    font-family: "ubuntu";
     display: block;
     color: #f7b733;
     text-align: center;
@@ -57,7 +58,7 @@ const NavbarDesktopLinks = styled.ul`
     margin: 0;
   }
   li a {
-    font-family: 'ubuntu';
+    font-family: "ubuntu";
     display: block;
     color: white;
     text-align: center;
@@ -107,7 +108,18 @@ class Navbar extends React.Component {
     };
   }
   componentDidMount() {
+<<<<<<< HEAD
     this.props.handleUsername();
+=======
+    axios
+      .get("/api/username")
+      .then(response => {
+        this.setState({ username: response });
+      })
+      .catch(err => {
+        console.log("err => ", err);
+      });
+>>>>>>> addUpdateDeletePosts
   }
   render() {
     const { username } = this.props;
@@ -120,7 +132,11 @@ class Navbar extends React.Component {
                 <li>chat</li>
               </Link>
               <li>wallet</li>
+<<<<<<< HEAD
               <li>{username}</li>
+=======
+              <Link to="/user">user</Link>
+>>>>>>> addUpdateDeletePosts
             </NavbarDesktopUser>
           </div>
           <div className="Navbar-desktop-links">

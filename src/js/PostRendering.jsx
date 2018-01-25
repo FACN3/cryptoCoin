@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import PostTemplate from './PostTemplate';
-import styled from 'styled-components';
-import axios from 'axios';
+import React, { Component } from "react";
+import PostTemplate from "./PostTemplate";
+import styled from "styled-components";
+import axios from "axios";
 
 const AllPostsContainer = styled.div`
   width: 70%;
   box-shadow: 7px 6px #dad5cb;
   border: 1px solid black;
   margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 
   @media (max-width: 700px) {
     width: 95%;
@@ -26,7 +26,7 @@ class BuildPosts extends Component {
   componentDidMount() {
     if (!this.state.posts) {
       axios
-        .get('/api/posts')
+        .get("/api/posts")
         .then(response => {
           this.setState({ posts: response.data });
         })
@@ -40,7 +40,14 @@ class BuildPosts extends Component {
         <AllPostsContainer>
           {this.state.posts.map(post => {
             if (this.props.page == post.buyerseller) {
-              return <PostTemplate key={post.post_id} post={post} />;
+              return (
+                <PostTemplate
+                  key={post.post_id}
+                  postId={post.post_id}
+                  post={post}
+                  user="hasan"
+                />
+              );
             }
           })}
         </AllPostsContainer>
