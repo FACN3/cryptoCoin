@@ -22,16 +22,16 @@ const p = {
 const posts = props => (
   <DivContainer>
     <div>
-      <h4>{props.post.user_name}</h4>
+      <h4>{props.post.username}</h4>
     </div>
     <div>
-      <h4>{props.post.preferedPaymentMethod}</h4>
+      <h4>{props.post.prefferedpayment}</h4>
     </div>
     <div>
       <h4>{props.post.country}</h4> <h5>{props.post.city}</h5>
     </div>
     <div>
-      <h4>{props.post.coin}</h4> <h5>{props.post.amount} - QTY</h5>
+      <h4>{props.post.coin}</h4> <h5>{props.post.qty} - QTY</h5>
     </div>
     <div>
       <Link to="/chat">

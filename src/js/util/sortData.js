@@ -23,8 +23,8 @@ export function coindeskSort(apiData) {
         style: 'currency',
         currency: 'USD'
       }),
-      x: count, //previous days
-      y: apiData[date] // numerical price
+      x: count,
+      y: apiData[date] 
     });
     count++;
   }
