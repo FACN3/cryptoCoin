@@ -22,7 +22,7 @@ CREATE TABLE posts(
   coin TEXT NOT NULL,
   qty INTEGER NOT NULL,
   price INTEGER NOT NULL,
-  buyerSeller TEXT NOT NULL,
+  buyerseller TEXT NOT NULL,
   added_date DATE DEFAULT now()
 );
 

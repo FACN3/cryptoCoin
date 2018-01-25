@@ -3,7 +3,7 @@ import PostTemplate from "./PostTemplate";
 import styled from "styled-components";
 import axios from "axios";
 
-const AllPostsContainer = styled.div `
+const AllPostsContainer = styled.div`
   width: 70%;
   box-shadow: 7px 6px #dad5cb;
   border: 1px solid black;
@@ -26,24 +26,31 @@ class BuildPosts extends React.Component {
   componentDidMount() {
     if (!this.state.posts) {
       axios.get("/api/posts").then(response => {
-        this.setState({posts: response.data});
+        this.setState({ posts: response.data });
         console.log(this.state);
-      })
+      });
     }
   }
 
   render() {
     if (this.state.posts) {
-      return (<AllPostsContainer>
-        {(this.state.posts.map(post => {
+      return (
+        <AllPostsContainer>
+          {this.state.posts.map(post => {
             if (this.props.page == post.buyerseller) {
-              return <PostTemplate key={post.post_id} post={post}/>;
+              return (
+                <PostTemplate
+                  key={post.post_id}
+                  postId={post.post_id}
+                  post={post}
+                  user="hasan"
+                />
+              );
             }
-          }))
-        }
-      </AllPostsContainer>)
+          })}
+        </AllPostsContainer>
+      );
     } else {
-
       return <h2>Loading</h2>;
     }
   }

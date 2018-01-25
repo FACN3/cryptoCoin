@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-const NavbarDesktopUser = styled.div `
+const NavbarDesktopUser = styled.div`
   position: fixed;
   list-style-type: none;
   width: -webkit-fill-available;
@@ -18,10 +18,11 @@ const NavbarDesktopUser = styled.div `
     color: white;
     margin: 0;
   }
-  li {
+  li,
+  a {
     float: right;
     margin: 0 auto;
-    font-family: 'ubuntu';
+    font-family: "ubuntu";
     display: block;
     color: #f7b733;
     text-align: center;
@@ -35,7 +36,7 @@ const NavbarDesktopUser = styled.div `
   }
 `;
 
-const NavbarDesktopLinks = styled.ul `
+const NavbarDesktopLinks = styled.ul`
   list-style-type: none;
   margin: 0;
   margin-top: 25px;
@@ -54,7 +55,7 @@ const NavbarDesktopLinks = styled.ul `
     margin: 0;
   }
   li a {
-    font-family: 'ubuntu';
+    font-family: "ubuntu";
     display: block;
     color: white;
     text-align: center;
@@ -71,7 +72,7 @@ const NavbarDesktopLinks = styled.ul `
   }
 `;
 
-const NavbarMobileNavbar = styled.ul `
+const NavbarMobileNavbar = styled.ul`
   position: fixed;
   list-style-type: none;
   margin: 0;
@@ -97,63 +98,68 @@ const NavbarMobileNavbar = styled.ul `
 `;
 
 class Navbar extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      username:null
-    }
+      username: null
+    };
   }
   componentDidMount() {
-    axios.get("/api/username").then(response => {
-      this.setState({username : response});
-    }).catch(err => {
-      console.log("err => ", err);
-    })
+    axios
+      .get("/api/username")
+      .then(response => {
+        this.setState({ username: response });
+      })
+      .catch(err => {
+        console.log("err => ", err);
+      });
   }
   render() {
-    return (<div>
-      <div className="Navbar-desktop">
-        <div className="Navbar-desktop-user">
-          <NavbarDesktopUser>
-            <li>chat</li>
-            <li>wallet</li>
-            <li>user</li>
-          </NavbarDesktopUser>
-        </div>
-        <div className="Navbar-desktop-links">
-          <NavbarDesktopLinks>
-            <h2>CryptoCoin</h2>
-            <li>
-              <Link to="/sell">SELL</Link>
-            </li>
-            <li>
-              <Link to="/buy">BUY</Link>
-            </li>
-            <li>
-              <Link to="/markets">MARKETS</Link>
-            </li>
-            <li>
-              <Link to="/learn">LEARN</Link>
-            </li>
-          </NavbarDesktopLinks>
-          <NavbarMobileNavbar>
-            <h2>CryptoCoin</h2>
-            <li>
-              <Link to="/sell">SELL</Link>
-            </li>
-            <li>
-              <Link to="/buy">BUY</Link>
-            </li>
-            <li>
-              <Link to="/markets">MARKETS</Link>
-            </li>
-            <li>
-              <Link to="/learn">LEARN</Link>
-            </li>
-          </NavbarMobileNavbar>
+    return (
+      <div>
+        <div className="Navbar-desktop">
+          <div className="Navbar-desktop-user">
+            <NavbarDesktopUser>
+              <li>chat</li>
+              <li>wallet</li>
+              <Link to="/user">user</Link>
+            </NavbarDesktopUser>
+          </div>
+          <div className="Navbar-desktop-links">
+            <NavbarDesktopLinks>
+              <h2>CryptoCoin</h2>
+              <li>
+                <Link to="/sell">SELL</Link>
+              </li>
+              <li>
+                <Link to="/buy">BUY</Link>
+              </li>
+              <li>
+                <Link to="/markets">MARKETS</Link>
+              </li>
+              <li>
+                <Link to="/learn">LEARN</Link>
+              </li>
+            </NavbarDesktopLinks>
+            <NavbarMobileNavbar>
+              <h2>CryptoCoin</h2>
+              <li>
+                <Link to="/sell">SELL</Link>
+              </li>
+              <li>
+                <Link to="/buy">BUY</Link>
+              </li>
+              <li>
+                <Link to="/markets">MARKETS</Link>
+              </li>
+              <li>
+                <Link to="/learn">LEARN</Link>
+              </li>
+            </NavbarMobileNavbar>
+          </div>
         </div>
       </div>
-    </div>);
+    );
   }
 }
 export default Navbar;
